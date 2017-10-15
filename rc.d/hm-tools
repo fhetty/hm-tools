@@ -1,0 +1,33 @@
+#!/bin/sh
+
+ADDONNAME=hm-tools
+ADDON_DIR=/usr/local/addons/hm-tools
+PROFILE_DIR=/usr/local/etc/profile.d
+WWW_DIR=/usr/local/etc/config/addons/www/hm-tools
+# CONFIG_URL=/addons/hm-tools/
+
+case "$1" in
+""|start)
+  ;;
+info)
+  echo "Info: <b>HM-Tools CCU Addon</b><br>"
+  echo "Info: expect Version: 5.45.3<br>"
+  echo "Info: midnight commander Version: 4.8.19<br>"
+  echo "Info: nano Version: 2.8.4<br>"
+  echo "Info: <br>"
+  echo "Info: (c) 2017 Frank Hettrich<br>"
+  echo "Info: <a href='https://github.com/fhetty/hm-tools'>https://github.com/fhetty/hm-tools</a>"
+  echo "Version: $(cat ${ADDON_DIR}/VERSION)"
+  echo "Name: HM-Tools<br>"
+  echo "Operations: uninstall"
+  echo "Update: /addons/${ADDONNAME}/update-check.cgi"
+  ;;
+uninstall)
+  rm -rf $ADDON_DIR
+  rm -rf $WWW_DIR
+  rm -rf $PROFILE_DIR/hm-tools-addons.sh
+  
+  ;;
+esac
+
+exit 0
