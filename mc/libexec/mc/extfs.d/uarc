@@ -23,7 +23,7 @@ mc_arc_fs_list()
             UID=0
         fi
     fi
-    $ARC_LIST "$1" | mawk -v uid=$UID '
+    $ARC_LIST "$1" | gawk -v uid=$UID '
 BEGIN {
   # Copied from uzoo.in.
   split("Jan:Feb:Mar:Apr:May:Jun:Jul:Aug:Sep:Oct:Nov:Dec", month_list, ":")

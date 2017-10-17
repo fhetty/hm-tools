@@ -9,7 +9,7 @@ UNALZ=unalz
 
 mcualz_list ()
 {
-	$UNALZ -l "$1" | mawk -v uid=`id -nu` -v gid=`id -ng` '
+	$UNALZ -l "$1" | gawk -v uid=`id -nu` -v gid=`id -ng` '
 {
     if ($1 ~ /[0-9][0-9][:/][0-9][0-9][:/][0-9][0-9]$/)
     {

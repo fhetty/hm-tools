@@ -132,7 +132,7 @@ mcisofs_list () {
       *)     MYCAT="cat";;
     esac
 
-    $ISOINFO -l -i "$1" 2>/dev/null | mawk -v SEMICOLON=$SEMICOLON '
+    $ISOINFO -l -i "$1" 2>/dev/null | gawk -v SEMICOLON=$SEMICOLON '
 BEGIN {
   dir="";
   # Pattern to match 8 first fields.

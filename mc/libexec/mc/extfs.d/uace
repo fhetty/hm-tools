@@ -32,7 +32,7 @@ mc_ace_fs_list()
             UID=0
         fi
     fi
-    $ACE_LIST "$1" | mawk -v uid=$UID '
+    $ACE_LIST "$1" | gawk -v uid=$UID '
 /%/ { 
   split($1,date,".")
 

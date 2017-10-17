@@ -35,7 +35,7 @@ fi
 
 mcrar4fs_list ()
 {
-     $UNRAR v -c- -cfg- "$1" | mawk -v uid=`id -u` -v gid=`id -g` '
+     $UNRAR v -c- -cfg- "$1" | gawk -v uid=`id -u` -v gid=`id -g` '
 BEGIN { flag=0 }
 /^-------/ { flag++; if (flag > 1) exit 0; next }
 flag==1 {
@@ -53,7 +53,7 @@ flag==1 {
 
 mcrar5fs_list ()
 {
-    $UNRAR vt -c- -cfg- "$1" | mawk -F ':' -v uid=`id -u` -v gid=`id -g` '
+    $UNRAR vt -c- -cfg- "$1" | gawk -F ':' -v uid=`id -u` -v gid=`id -g` '
     {
         ### remove space after the ":" of the field name
         sub ("^ ", "", $2);

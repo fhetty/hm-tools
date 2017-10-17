@@ -28,7 +28,7 @@
 # Learn Latin.
 
 # Define your awk
-AWK=mawk
+AWK=gawk
 
 # Define which archiver you are using with appropriate options
 LHA_LIST="lha lq"
