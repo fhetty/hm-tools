@@ -10,7 +10,7 @@ Bitte erst installieren, wenn Jens Maus sein nächstes Release online gestellt h
 * nano                Version: 2.8.4
 
 ### Hinweis zu mc:
-Wenn der Midnight Commander unter Putty die Ränder nicht als Linien, sondern als buchstaben darstellt,
+Wenn der Midnight Commander unter Putty die Ränder nicht als Linien, sondern als Buchstaben darstellt,
 müsst ihr folgende Änderung in den Verbindungseinstellungen des Putty vornehmen.
 
 Unter:
