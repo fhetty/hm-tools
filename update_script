@@ -35,7 +35,7 @@ chmod 755 ${PROFILE_DIR}
 
 
 # remove old stuff
-rm -f $ADDON_DIR/*
+rm -rf $ADDON_DIR/*
 
 # copy profile.d
 cp -af profile.d/* ${PROFILE_DIR}/
