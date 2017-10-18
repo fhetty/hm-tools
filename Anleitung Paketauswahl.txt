@@ -1,0 +1,94 @@
+**************************** Anleitung Pakete abwählen *******************************
+
+Bitte komplett lesen, dann loslegen!
+
+Wer nicht versteht, was hier erklärt ist, einfach das komplette auf dem git
+bereitgestellte Release installieren!
+
+https://github.com/fhetty/hm-tools/releases
+
+
+
+***************** Ein Linux System ist vorhanden *****************
+
+git clone https://github.com/fhetty/hm-tools.git
+
+cd hm-tools
+
+In der Datei "generate_img.sh" folgenden Bereich editieren:
+
+### Hier können einzelne Programme !!! abgewählt !!! werden ###
+# z.B. "cp -a expect tmp/"
+# wird "# cp -a expect tmp/"
+  
+# copy expect
+cp -a expect tmp/
+
+# copy mc
+cp -a mc tmp/
+
+# copy nano
+cp -a nano tmp/
+
+###############################################################
+
+Danach einfach die "generate_img.sh" ausführen.
+
+Jetzt habt Ihr eine fertige "hm-tools.x.x.x.tar.gz" Datei,
+die wie jedes Addon auf dem Homematic-Raspi installiert werden kann.
+
+******************************************************************
+
+
+
+******************* Kein Linux System zur Hand *******************
+
+
+
+Es besteht die Möglichkeit, unter Windows z.B. mit Total Commander
+die heruntergeladene Datei "hm-tools-x.x.x.tar.gz" durch Doppelklick
+temporär zu entpacken und in der tar.gz die Datei "update_script" zu editieren.
+Dazu am besten das Programm "Notepad++" verwenden, da mit anderen Editoren mitunter
+das Dateiformat von Linux in Windows geändert wird!
+
+
+Dort diesen Bereich suchen, und die nicht benötigten Programme auskommentieren.
+
+  ### Hier können einzelne Programme !!! abgewählt !!! werden ###
+  # z.B. "cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/"
+  # wird "# cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
+
+  # copy addon expect
+  cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
+
+  # copy addon mc
+  cp -af ${TOOL_MC}/* ${ADDON_DIR}/
+
+  # copy addon nano
+  cp -af ${TOOL_NANO}/* ${ADDON_DIR}/
+
+  ###############################################################
+  
+Nach dem Speichern und Schließen des Editors fragt z.B. Total Commander,
+ob die Änderung zurück gepackt werden soll.
+Dieses Fenster mit "Ja" schließen.
+Danach aus der temporär entpackten "hm-tools-x.x.x.tar.gz" zurück navigieren (Backspace)
+Danach kommt eine weitere Abfrage, ob zurück gepackt werden soll.
+Auch diese Frage mit "Ja" bestätigen.
+Das anschießend erscheinende Fenster "Wollen Sie die Datei überschreiben"
+ebenfalls mit "Ja" bestätigen.
+Jetzt noch einmal zurück navigieren (Backspace) und Ihr seht wieder die hm-tools-x.x.x.tar.gz.
+Diese kann wie jedes Addon auf dem Homematic-Raspi installiert werden kann.
+
+Unter
+-> Einstellungen
+               -> Systemsteuerung
+                                 -> Zusatzsoftware
+                                 
+wird im rechten Bereich des HM-Tools angezeigt, welche Erweiterungen installiert sind.
+
+Viel Spaß
+
+Ich hafte nicht für Hard- und Softwareschäden, die am PC-System, oder Homematic-Raspi
+durch die Verwendung dieses Addons entstehen.
+Verwendung des Addon auf eigene Gefahr.
