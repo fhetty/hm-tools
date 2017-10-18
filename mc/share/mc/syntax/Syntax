@@ -43,7 +43,7 @@ include sh.syntax
 file ..\*\\.(pl|PL|pm|PM|psgi|PSGI|t)$ Perl\sProgram ^#!.\*([\s/]perl|/usr/bin/perl)
 include perl.syntax
 
-file ..\*\\.(py|PY)$ Python\sProgram ^#!.\*([\s/]python|/usr/bin/python)
+file ..\*\\.(py|PY)$ Python\sProgram ^#!.\*([\s/]python|/home/hetty/RaspberryMatic/build-raspmatic_rpi3/host/bin/python)
 include python.syntax
 
 file ..\*\\.(pyx|pxd|pxi)$ Cython\sor\sPyrex\sProgram

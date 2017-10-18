@@ -27,8 +27,8 @@ do_open_action() {
 
     case "${filetype}" in
     html)
-        (if [ -n "" -a  -n "$DISPLAY" ]; then
-            ( file://"${MC_EXT_CURRENTDIR}"/"${MC_EXT_BASENAME}" &) 1>&2
+        (if [ -n "firefox" -a  -n "$DISPLAY" ]; then
+            (firefox file://"${MC_EXT_CURRENTDIR}"/"${MC_EXT_BASENAME}" &) 1>&2
         else
             elinks "${MC_EXT_FILENAME}" || \
                 links "${MC_EXT_FILENAME}" || \
