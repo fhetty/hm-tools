@@ -47,5 +47,5 @@ Danke an Jens Maus, für seine Unterstützung.
 * https://github.com/jens-maus/RaspberryMatic<br>
 <br>
 Ich hafte nicht für Hard- und Softwareschäden, die am PC-System, oder Homematic-Raspi
-durch die Verwendung dieses Addons entstehen.
+durch die Verwendung dieses Addons entstehen.<br>
 Verwendung des Addon auf eigene Gefahr.
