@@ -11,9 +11,17 @@ case "$1" in
   ;;
 info)
   echo "Info: <b>HM-Tools CCU Addon</b><br>"
-  echo "Info: expect Version: 5.45.3<br>"
-  echo "Info: midnight commander Version: 4.8.19<br>"
-  echo "Info: nano Version: 2.8.4<br>"
+  
+  if [ -e $ADDON_DIR/bin/expect ]; then
+    echo "Info: expect Version: 5.45.3<br>"
+  fi
+  if [ -e $ADDON_DIR/bin/mc ]; then
+    echo "Info: midnight commander Version: 4.8.19<br>"
+  fi
+  if [ -e $ADDON_DIR/bin/nano ]; then
+    echo "Info: nano Version: 2.8.4<br>"
+  fi
+
   echo "Info: <br>"
   echo "Info: (c) 2017 Frank Hettrich<br>"
   echo "Info: <a href='https://github.com/fhetty/hm-tools'>https://github.com/fhetty/hm-tools</a>"

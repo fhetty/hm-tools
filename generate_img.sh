@@ -13,6 +13,10 @@ cp -a www tmp/
 cp -a rc.d tmp/
 cp -a profile.d tmp/
 
+### Hier können einzelne Programme !!! abgewählt !!! werden ###
+# z.B. "cp -a expect tmp/"
+# wird "# cp -a expect tmp/"
+  
 # copy expect
 cp -a expect tmp/
 
@@ -21,6 +25,8 @@ cp -a mc tmp/
 
 # copy nano
 cp -a nano tmp/
+
+############################################################### 
 
 # generate archive
 cd tmp

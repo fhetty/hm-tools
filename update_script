@@ -15,51 +15,57 @@ RCD_DIR=${CONFIG_DIR}/rc.d
 
 if [ "$1" == "HM-RASPBERRYMATIC" ]; then
 
-mount | grep /usr/local 2>&1 >/dev/null
-  if [ $? -eq 1 ]; then
-    mount /usr/local
-  fi
+  mount | grep /usr/local 2>&1 >/dev/null
+    if [ $? -eq 1 ]; then
+      mount /usr/local
+    fi
 
-# create necessary directories
-mkdir -p ${ADDON_DIR}
-chmod 755 ${ADDON_DIR}
-# web-configuration
-mkdir -p ${WWW_DIR}
-chmod 755 ${WWW_DIR}
-# rc.d
-mkdir -p ${RCD_DIR}
-chmod 755 ${RCD_DIR}
-# profile.d
-mkdir -p ${PROFILE_DIR}
-chmod 755 ${PROFILE_DIR}
+  # create necessary directories
+  mkdir -p ${ADDON_DIR}
+  chmod 755 ${ADDON_DIR}
+  # web-configuration
+  mkdir -p ${WWW_DIR}
+  chmod 755 ${WWW_DIR}
+  # rc.d
+  mkdir -p ${RCD_DIR}
+  chmod 755 ${RCD_DIR}
+  # profile.d
+  mkdir -p ${PROFILE_DIR}
+  chmod 755 ${PROFILE_DIR}
 
 
-# remove old stuff
-rm -rf $ADDON_DIR/*
+  # remove old stuff
+  rm -rf $ADDON_DIR/*
 
-# copy profile.d
-cp -af profile.d/* ${PROFILE_DIR}/
+  # copy profile.d
+  cp -af profile.d/* ${PROFILE_DIR}/
 
-# copy addon expect
-cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
+  ### Hier können einzelne Programme !!! abgewählt !!! werden ###
+  # z.B. "cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/"
+  # wird "# cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
 
-# copy addon mc
-cp -af ${TOOL_MC}/* ${ADDON_DIR}/
+  # copy addon expect
+  cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
 
-# copy addon nano
-cp -af ${TOOL_NANO}/* ${ADDON_DIR}/
+  # copy addon mc
+  cp -af ${TOOL_MC}/* ${ADDON_DIR}/
 
-# copy web-configuration
-cp -af www/* ${WWW_DIR}
+  # copy addon nano
+  cp -af ${TOOL_NANO}/* ${ADDON_DIR}/
 
-# copy version
-cp -af VERSION ${ADDON_DIR}/
+  ###############################################################
 
-# copy startup script
-cp -af rc.d/* ${RCD_DIR}
+  # copy web-configuration
+  cp -af www/* ${WWW_DIR}
 
-#build system launcher
-chmod +x ${RCD_DIR}/${ADDON_NAME}
+  # copy version
+  cp -af VERSION ${ADDON_DIR}/
+
+  # copy startup script
+  cp -af rc.d/* ${RCD_DIR}
+
+  #build system launcher
+  chmod +x ${RCD_DIR}/${ADDON_NAME}
 
 fi
 
