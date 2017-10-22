@@ -1,8 +1,6 @@
 # hm-tools
 <B>Achtung!</B> <br>
-Dieses Addon funktioniert erst ab RaspberryMatic Version <B>größer 2.29.22.20171007</B><br>
-
-Bitte erst installieren, wenn Jens Maus sein nächstes Release online gestellt hat.<br>
+Dieses Addon funktioniert ab Version <B>RaspberryMatic 2.29.23.20171022</B><br>
 
 ## Unterstützte CCU Modelle
 * [RaspberryMatic](http://homematic-forum.de/forum/viewtopic.php?f=56&t=26917)
