@@ -10,6 +10,7 @@ Dieses Addon funktioniert ab Version <B>RaspberryMatic 2.29.23.20171022</B><br>
 * expect / v 5.45.3
 * midnight commander / v 4.8.19
 * nano / v 2.8.4
+* htop / v 2.0.2
 
 ### Ihr braucht nicht alle Pakete!
 
