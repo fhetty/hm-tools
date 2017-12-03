@@ -26,6 +26,9 @@ cp -a mc tmp/
 # copy nano
 cp -a nano tmp/
 
+# copy htop
+cp -a htop tmp/
+
 ###############################################################
 
 # generate archive
