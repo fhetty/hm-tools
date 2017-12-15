@@ -1,6 +1,6 @@
 # hm-tools
 <B>Achtung!</B> <br>
-Dieses Addon funktioniert ab Version <B>RaspberryMatic 2.29.23.20171022</B><br>
+Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B><br>
 
 ## Unterstützte CCU Modelle
 * [RaspberryMatic](http://homematic-forum.de/forum/viewtopic.php?f=56&t=26917)
@@ -11,6 +11,11 @@ Dieses Addon funktioniert ab Version <B>RaspberryMatic 2.29.23.20171022</B><br>
 * midnight commander / v 4.8.19
 * nano / v 2.8.4
 * htop / v 2.0.2
+
+### Anmerkung:
+Dieses Addon ist nur für Anwender, die wissen, für was man die Programme benötigt!<br>
+Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
+Wenn Euch die Programme nichts sagen, braucht Ihr dieses Addon nicht!!!<br>
 
 ### Ihr braucht nicht alle Pakete!
 
@@ -37,14 +42,28 @@ Dieses Addon schreibt nicht in den schreibgeschützten Bereich des Filesystem!
 
 Viel Spaß mit hm-tools.
 
+## Licenses:
+All binaries are compiled from the Buildroot system source code.<br>
+The source code of the compiled binaries was not modified.<br>
+<br>
+The source code of the binaries is subject to the following licenses:<br>
+
+| Package | License |
+| ------------- | ------------- |
+| mc | GNU General Public License |
+| expect | Public Domain |
+| nano | GNU General Public License |
+| htop | GNU General Public License |
+| bash | GNU General Public License |
+
 ### Autor
-Copyright (c) 2017 Frank Hettrich
+2017 Frank Hettrich
 
 ### Notice
 Danke an Jens Maus, für seine Unterstützung.
 ## RaspberryMatic
 * https://github.com/jens-maus/RaspberryMatic<br>
 <br>
-Ich hafte nicht für Hard- und Softwareschäden, die am PC-System, oder Homematic-Raspi
+Ich hafte nicht für Schäden, die an eurer Hardware
 durch die Verwendung dieses Addons entstehen.<br>
 Verwendung des Addon auf eigene Gefahr.
