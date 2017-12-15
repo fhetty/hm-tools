@@ -5,7 +5,7 @@ Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B>
 ## Unterstützte CCU Modelle
 * [RaspberryMatic](http://homematic-forum.de/forum/viewtopic.php?f=56&t=26917)
 
-### Im Plugin sind zur Zeit folgende Tools enthalten:
+### Im Plugin sind zur Zeit folgende Konsolen-Tools enthalten:
 
 * expect / v 5.45.3
 * midnight commander / v 4.8.19
