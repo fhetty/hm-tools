@@ -7,10 +7,10 @@ Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B>
 
 ### Im Plugin sind zur Zeit folgende Konsolen-Tools enthalten:
 
-* expect / v 5.45.3
-* midnight commander / v 4.8.19
-* nano / v 2.8.4
-* htop / v 2.0.2
+* expect
+* midnight commander (mc)
+* nano
+* htop
 
 ### Anmerkung:
 Dieses Addon ist nur für Anwender, die wissen, für was man die Programme benötigt!<br>
