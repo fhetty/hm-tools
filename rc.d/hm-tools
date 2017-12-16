@@ -24,6 +24,9 @@ info)
   if [ -e $ADDON_DIR/bin/htop ]; then
     echo "Info: htop Version: 2.0.2<br>"
   fi
+  if [ -e $ADDON_DIR/bin/bash ]; then
+    echo "Info: bash Version: 4.4.12<br>"
+  fi
 
   echo "Info: <br>"
   echo "Info: (c) 2017 Frank Hettrich<br>"

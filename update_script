@@ -5,6 +5,7 @@ TOOL_EXPECT=expect
 TOOL_MC=mc
 TOOL_NANO=nano
 TOOL_HTOP=htop
+TOOL_BASH=bash
 CONFIG_DIR=/usr/local/etc/config
 WWW_DIR=/usr/local/etc/config/addons/www/hm-tools
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
@@ -56,6 +57,9 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
   
   # copy addon htop
   cp -af ${TOOL_HTOP}/* ${ADDON_DIR}/
+  
+  # copy addon bash
+  cp -af ${TOOL_BASH}/* ${ADDON_DIR}/
 
   ###############################################################
 

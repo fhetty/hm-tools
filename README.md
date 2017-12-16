@@ -11,6 +11,7 @@ Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B>
 * midnight commander (mc)
 * nano
 * htop
+* bash
 
 ### Anmerkung:
 Dieses Addon ist nur für Anwender, die wissen, für was man die Programme benötigt!<br>

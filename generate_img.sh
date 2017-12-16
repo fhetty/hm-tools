@@ -29,6 +29,9 @@ cp -a nano tmp/
 # copy htop
 cp -a htop tmp/
 
+# copy bash
+cp -a bash tmp/
+
 ###############################################################
 
 # generate archive
