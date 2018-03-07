@@ -12,7 +12,7 @@ Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B>
 * nano
 * htop
 * bash
-* imagemagick
+* imagemagick (libjpeg, libpng include)
 
 ### Anmerkung:
 Dieses Addon ist nur für Anwender, die wissen, für was man die Programme benötigt!<br>
