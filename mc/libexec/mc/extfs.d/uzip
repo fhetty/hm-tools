@@ -19,7 +19,7 @@ my $app_zip = "/usr/bin/zip";
 # Location of the unzip program
 my $app_unzip = $ENV{MC_TEST_EXTFS_LIST_CMD} || "/usr/bin/unzip";
 # Set this to 1 if zipinfo (unzip -Z) is to be used (recommended), otherwise 0.
-my $op_has_zipinfo = exists($ENV{MC_TEST_EXTFS_HAVE_ZIPINFO}) ? $ENV{MC_TEST_EXTFS_HAVE_ZIPINFO} : 0;
+my $op_has_zipinfo = exists($ENV{MC_TEST_EXTFS_HAVE_ZIPINFO}) ? $ENV{MC_TEST_EXTFS_HAVE_ZIPINFO} : 1;
 
 # Command used to list archives (zipinfo mode)
 my $cmd_list_zi = "$app_unzip -Z -l -T";

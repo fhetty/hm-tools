@@ -16,7 +16,7 @@ info)
     echo "Info: expect Version: 5.45.3<br>"
   fi
   if [ -e $ADDON_DIR/bin/mc ]; then
-    echo "Info: midnight commander Version: 4.8.19<br>"
+    echo "Info: midnight commander Version: 4.8.20<br>"
   fi
   if [ -e $ADDON_DIR/bin/nano ]; then
     echo "Info: nano Version: 2.8.7<br>"

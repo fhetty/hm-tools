@@ -1,27 +1,19 @@
 #
-# JavaScript syntax highlighting
+# TypeScript syntax highlighting
 # for MC Editor/CoolEdit
 #
-# Author: Vlad Romanenko <VladRomanenko@ukr.net>
-# Based on c.syntax
-#
-# TODO:
-# Highlight JS regexpressions /../
-# More built-in functions
-#
-# 2002-09-17  Vlad Romanenko <VladRomanenko@ukr.net>
-#    * More C and Java consistency by Pavel Roskin <proski@gnu.org>.
-#    * Advanced number highlighting.
-#
-# 2002-09-16  Vlad Romanenko <VladRomanenko@ukr.net>
-#    * Initial public release.
+# Author: Oleksandr Sidko <mortiy@gmail.com>
+# Based on js.syntax
 #
 
 context default
 
+
     #=========================
     # Keywords
+    keyword whole abstract yellow
     keyword whole arguments yellow
+    keyword whole as yellow
     keyword whole break yellow
     keyword whole caller yellow
     keyword whole case yellow
@@ -30,22 +22,36 @@ context default
     keyword whole const yellow
     keyword whole constructor yellow
     keyword whole continue yellow
+    keyword whole declare yellow
     keyword whole else yellow
+    keyword whole enum yellow
     keyword whole extends yellow
     keyword whole export yellow
     keyword whole default yellow
     keyword whole delete yellow
     keyword whole for yellow
+    keyword whole from yellow
     keyword whole function yellow
+    keyword whole get yellow
     keyword whole if yellow
     keyword whole import yellow
+    keyword whole implements yellow
     keyword whole in yellow
     keyword whole instanceof yellow
+    keyword whole interface yellow
     keyword whole let yellow
+    keyword whole module yellow
+    keyword whole namespace yellow
     keyword whole new yellow
     keyword whole of yellow
+    keyword whole private yellow
+    keyword whole protected yellow
     keyword whole prototype yellow
+    keyword whole public yellow
+    keyword whole readonly yellow
     keyword whole return yellow
+    keyword whole set yellow
+    keyword whole static yellow
     keyword whole switch yellow
     keyword whole this yellow
     keyword whole throw yellow
@@ -55,6 +61,15 @@ context default
     keyword whole while yellow
     keyword whole with yellow
     keyword whole yield yellow
+
+    #=========================
+    # Basic Types
+    keyword whole string cyan
+    keyword whole number cyan
+    keyword whole boolean cyan
+    keyword whole any cyan
+    keyword whole void cyan
+    keyword whole T cyan
 
     #=========================
     # Objects
@@ -76,6 +91,7 @@ context default
     keyword whole Proxy yellow
     keyword whole Reflect yellow
     keyword whole Set yellow
+    keyword whole String yellow
     keyword whole Symbol yellow
     keyword whole TextStream yellow
     keyword whole RegExp yellow
@@ -122,6 +138,7 @@ context default
 
     #=========================
     # Special symbols
+    keyword <+> cyan
     keyword => brightcyan
     keyword \. yellow
     keyword \* yellow
@@ -137,6 +154,7 @@ context default
     keyword ~ yellow
     keyword > yellow
     keyword < yellow
+    keyword wholeright @+ cyan
 
     #=========================
     # Separators
@@ -151,6 +169,10 @@ context default
     keyword : brightcyan
     keyword ; brightmagenta
 
+# Function return type
+context exclusive wholeright ): \n cyan
+    keyword ; brightmagenta
+    keyword { brightcyan
 
 #=============================
 # Comments
@@ -203,3 +225,5 @@ context ` ` green
     keyword \\\{\\'"abtnvfr\} brightgreen
     keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
     keyword ${*} yellow
+
+

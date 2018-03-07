@@ -17,7 +17,7 @@ Topics:
 
   Menu BarMenu Bar
     Left and Right (Above and Below) MenusLeft and Right Menus
-      Listing Mode...Listing Mode...
+      Listing Format...Listing Format...
       Sort Order...Sort Order...
       Filter...Filter...
       RereadReread
@@ -322,7 +322,7 @@ This section lists the keys which operate on the directory panels. If you want t
 Alt-g, Alt-r, Alt-j
         used to select the top file in a panel, the middle file and the bottom one, respectively.
 
-Alt-t   toggle the current display listing to show the next display listing mode. With this it is possible to quickly switch to brief listing, long listing, user defined listing mode, and back to the default.
+Alt-t   toggle the current display listing to show the next display listing format. With this it is possible to quickly switch to brief listing, long listing, user defined listing format, and back to the default.
 
 C-\ (control-backslash)
         show the directory hotlistHotlist and change to the selected directory.
@@ -488,10 +488,10 @@ The Command MenuCommand Menu lists the actions which are more general and bea
 The Options MenuOptions Menu lists the actions which allow you to customize Midnight Commander.[Left and Right Menus]
 Left and Right (Above and Below) Menus
 
-The outlook of the directory panels can be changed from the Left and Right menus (they are named Above and Below when the horizontal panel split is chosen from the LayoutLayout options dialog).[Listing Mode...]
-Listing Mode...
+The outlook of the directory panels can be changed from the Left and Right menus (they are named Above and Below when the horizontal panel split is chosen from the LayoutLayout options dialog).[Listing Format...]
+Listing Format...
 
-The listing mode view is used to display a listing of files, there are four different listing modes available: Full, Brief, Long and User. The full directory view shows the file name, the size of the file and the modification time.
+The listing mode view is used to display a listing of files, there are four different listing formats available: Full, Brief, Long and User. The full directory view shows the file name, the size of the file and the modification time.
 
 The brief view shows only the file name and it has from 1 up to 9 columns (therefore showing more files unlike other views). The long view is similar to the output of "ls -l" command. The long view takes the whole screen width.
 
@@ -756,7 +756,7 @@ You can start the search by pressing the OK button. During the search you can st
 
 You can browse the filelist with the up and down arrow keys. The Chdir button will change to the directory of the currently selected file. The Again button will ask for the parameters for a new search. The Quit button quits the search operation. The Panelize button will place the found files to the current directory panel so that you can do additional operations on them (view, copy, move, delete and so on). To return to the normal file listing, change directory to "..".
 
-The 'Enable ignore directories' checkbox and input field below it allow to set up the list of directories that should be skip during the search files (for example, you may want to avoid searches on a CD-ROM or on a NFS directory that is mounted across a slow link). List components must be separated with a colon, here is an example:
+The 'Enable ignore directories' checkbox and input field below it allow one to set up the list of directories that should be skip during the search files (for example, you may want to avoid searches on a CD-ROM or on a NFS directory that is mounted across a slow link). List components must be separated with a colon, here is an example:
 
 /cdrom:/nfs/wuarchive:/afs
 
@@ -1013,9 +1013,9 @@ On the Linux or FreeBSD console you can specify how many lines are shown in the 
 
 Menu bar visible. If enabled, main menu of Midnight Commander is always visible on the top row of screen above panels. Enabled by default.
 
-Command prompt. If enabled, command line is avalable. Enabled by default.
+Command prompt. If enabled, command line is available. Enabled by default.
 
-Keybar visible. If enabled, 10 lables associated with F1-F10 keys are located at the bottom row of screen. Enabled by default.
+Keybar visible. If enabled, 10 labels associated with F1-F10 keys are located at the bottom row of screen. Enabled by default.
 
 Hintbar visible. If enabled, the one-line hints are visible below panels. Enabled by default.
 
@@ -1058,7 +1058,7 @@ Panel options
 
 File highlight
 
-You can specify whether permissions and file types should be highlighted with distinctive ColorsColors. If the permission highlighting is enabled, the parts of the perm and mode display fieldsListing Mode... which apply to the user running Midnight Commander are highlighted with the color defined by the selected keyword. If the file type highlighting is enabled, file names are colored according to rules described in /usr/local/addons/hm-tools/etc/mc/filehighlight.ini file. See Filenames HighlightFilenames Highlight for more info.
+You can specify whether permissions and file types should be highlighted with distinctive ColorsColors. If the permission highlighting is enabled, the parts of the perm and mode display fieldsListing Format... which apply to the user running Midnight Commander are highlighted with the color defined by the selected keyword. If the file type highlighting is enabled, file names are colored according to rules described in /usr/local/addons/hm-tools/etc/mc/filehighlight.ini file. See Filenames HighlightFilenames Highlight for more info.
 
 Quick search
 
@@ -1160,7 +1160,7 @@ The macros are:
 %m      The current menu name.
 
 %f and %p
-        The current file name.
+        In file manager user menu: the current file name in selected panel. In mcedit user menu: the name of opened file.
 
 %x      The extension of current file name.
 
@@ -2089,7 +2089,7 @@ FILES
 
 Full paths below may vary between installations. They are also affected by the MC_DATADIR environment variable. If it's set, its value is used instead of /usr/local/addons/hm-tools/share/mc in the paths below.
 
-/usr/local/addons/hm-tools/share/mc/mc.hlp
+/usr/local/addons/hm-tools/share/mc/help/mc.hlp
 
         The help file for the program.
 
@@ -2113,7 +2113,7 @@ Full paths below may vary between installations. They are also affected by the 
 
         User's own setup. If this file is present then the setup is loaded from here instead of the system-wide startup file.
 
-/usr/local/addons/hm-tools/share/mc/mc.hint
+/usr/local/addons/hm-tools/share/mc/hints/mc.hint
 
         This file contains the hints displayed by the program.
 
