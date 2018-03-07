@@ -19,7 +19,7 @@ info)
     echo "Info: midnight commander Version: 4.8.20<br>"
   fi
   if [ -e $ADDON_DIR/bin/nano ]; then
-    echo "Info: nano Version: 2.8.7<br>"
+    echo "Info: nano Version: 2.9.0<br>"
   fi
   if [ -e $ADDON_DIR/bin/htop ]; then
     echo "Info: htop Version: 2.0.2<br>"
