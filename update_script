@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ADDON_NAME=hm-tools
+LICENSES_DIR=licenses
 TOOL_EXPECT=expect
 TOOL_MC=mc
 TOOL_NANO=nano
@@ -42,6 +43,9 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
   # copy profile.d
   cp -af profile.d/* ${PROFILE_DIR}/
 
+  # copy licenses
+  cp -af ${LICENSES_DIR} ${ADDON_DIR}/
+  
   ### Hier können einzelne Programme !!! abgewählt !!! werden ###
   # z.B. "cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/"
   # wird "# cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
