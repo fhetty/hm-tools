@@ -12,6 +12,7 @@ Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B>
 * nano
 * htop
 * bash
+* imagemagick
 
 ### Anmerkung:
 Dieses Addon ist nur für Anwender, die wissen, für was man die Programme benötigt!<br>
@@ -56,9 +57,10 @@ The source code of the binaries is subject to the following licenses:<br>
 | nano | GNU General Public License |
 | htop | GNU General Public License |
 | bash | GNU General Public License |
+| imagemagick | GNU General Public License |
 
 ### Autor
-2017 Frank Hettrich
+2018 Frank Hettrich
 
 ### Notice
 Danke an Jens Maus, für seine Unterstützung.

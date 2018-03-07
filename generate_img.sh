@@ -12,6 +12,7 @@ cp -a VERSION tmp/
 cp -a www tmp/
 cp -a rc.d tmp/
 cp -a profile.d tmp/
+cp -a licenses tmp/
 
 ### Hier können einzelne Programme !!! abgewählt !!! werden ###
 # z.B. "cp -a expect tmp/"
@@ -31,6 +32,9 @@ cp -a htop tmp/
 
 # copy bash
 cp -a bash tmp/
+
+# copy imagemagick
+cp -a imagemagick tmp/
 
 ###############################################################
 

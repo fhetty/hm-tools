@@ -7,6 +7,7 @@ TOOL_MC=mc
 TOOL_NANO=nano
 TOOL_HTOP=htop
 TOOL_BASH=bash
+TOOL_IMAGEMAGICK=imagemagick
 CONFIG_DIR=/usr/local/etc/config
 WWW_DIR=/usr/local/etc/config/addons/www/hm-tools
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
@@ -64,6 +65,9 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
   
   # copy addon bash
   cp -af ${TOOL_BASH}/* ${ADDON_DIR}/
+  
+  # copy addon imagemagick
+  cp -af ${TOOL_IMAGEMAGICK}/* ${ADDON_DIR}/
 
   ###############################################################
 
