@@ -25,7 +25,7 @@ info)
     echo "Info: htop Version: 2.0.2<br>"
   fi
   if [ -e $ADDON_DIR/bin/bash ]; then
-    echo "Info: bash Version: 4.4.12<br>"
+    echo "Info: bash Version: 4.4.23<br>"
   fi
   if [ -e $ADDON_DIR/bin/magick ]; then
     echo "Info: imagemagick Version: 7.0.7-10<br>"
