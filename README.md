@@ -75,7 +75,6 @@ Thanks to Jens Maus for his support.
 <br>
 Ich hafte nicht für Schäden, die an eurer Hard- und Software
 durch die Verwendung dieses Addons entstehen.<br>
-Use the addon at your own risk!<br>
 Verwendung des Addon auf eigene Gefahr!<br>
 I'm not responsible for any hardware or software damage.<br>
 Use this addon at your own risk!
