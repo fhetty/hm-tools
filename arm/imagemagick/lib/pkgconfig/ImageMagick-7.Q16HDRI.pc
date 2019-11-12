@@ -1,0 +1,14 @@
+prefix=/usr/local/addons/hm-tools
+exec_prefix=/usr/local/addons/hm-tools
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/ImageMagick-7
+includearchdir=/usr/local/addons/hm-tools/include/ImageMagick-7
+libname=MagickCore-7.Q16HDRI
+ 
+Name: ImageMagick
+Description: ImageMagick - convert, edit, and compose images (ABI Q16HDRI)
+URL: https://github.com/ImageMagick
+Version: 7.0.8
+Cflags:  -I${includearchdir} -I${includedir} -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16
+Libs: -L${libdir} -l${libname}
+Libs.private: -L${libdir} -l${libname}     -L/home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/../arm-buildroot-linux-gnueabihf/sysroot/usr/lib -lfreetype   -ljpeg   -L/home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/../arm-buildroot-linux-gnueabihf/sysroot/usr/lib -lpng16 -lz       -L/home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/../arm-buildroot-linux-gnueabihf/sysroot/usr/lib -lfontconfig -lfreetype                    -L/home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/../arm-buildroot-linux-gnueabihf/sysroot/usr/lib -lz      -lm      -lm

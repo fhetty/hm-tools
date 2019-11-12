@@ -2,23 +2,28 @@
 
 ADDON_NAME=hm-tools
 LICENSES_DIR=licenses
-TOOL_EXPECT=expect
-TOOL_MC=mc
-TOOL_NANO=nano
-TOOL_HTOP=htop
-TOOL_BASH=bash
-TOOL_IMAGEMAGICK=imagemagick
 CONFIG_DIR=/usr/local/etc/config
 WWW_DIR=/usr/local/etc/config/addons/www/hm-tools
 ADDON_DIR=/usr/local/addons/${ADDON_NAME}
 PROFILE_DIR=/usr/local/etc/profile.d
 RCD_DIR=${CONFIG_DIR}/rc.d
 
+TOOL_EXPECT=expect
+TOOL_MC=mc
+TOOL_NANO=nano
+TOOL_HTOP=htop
+TOOL_BASH=bash
+TOOL_IMAGEMAGICK=imagemagick
+TOOL_SSHPASS=sshpass
+
+ARCH="$(uname -m)"
+
 # make sure this addon is only executed on
 # supported platforms
 
 if [ "$1" == "HM-RASPBERRYMATIC" ]; then
-
+  echo $1 >>$LOG_FILE
+  
   mount | grep /usr/local 2>&1 >/dev/null
     if [ $? -eq 1 ]; then
       mount /usr/local
@@ -46,29 +51,38 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
 
   # copy licenses
   cp -af ${LICENSES_DIR} ${ADDON_DIR}/
-  
+
+  if [ ${ARCH} == "i686" ]; then
+    FILE_DIR=amd64
+  else
+    FILE_DIR=arm
+  fi
+
   ### Hier können einzelne Programme !!! abgewählt !!! werden ###
-  # z.B. "cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/"
-  # wird "# cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
+  # z.B. "cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/"
+  # wird "# cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/"
 
   # copy addon expect
-  cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
+  cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/
 
   # copy addon mc
-  cp -af ${TOOL_MC}/* ${ADDON_DIR}/
+  cp -af ${FILE_DIR}/${TOOL_MC}/* ${ADDON_DIR}/
 
   # copy addon nano
-  cp -af ${TOOL_NANO}/* ${ADDON_DIR}/
+  cp -af ${FILE_DIR}/${TOOL_NANO}/* ${ADDON_DIR}/
   
   # copy addon htop
-  cp -af ${TOOL_HTOP}/* ${ADDON_DIR}/
-  
+  cp -af ${FILE_DIR}/${TOOL_HTOP}/* ${ADDON_DIR}/
+
   # copy addon bash
-  cp -af ${TOOL_BASH}/* ${ADDON_DIR}/
+  cp -af ${FILE_DIR}/${TOOL_BASH}/* ${ADDON_DIR}/
   
   # copy addon imagemagick
-  cp -af ${TOOL_IMAGEMAGICK}/* ${ADDON_DIR}/
-
+  cp -af ${FILE_DIR}/${TOOL_IMAGEMAGICK}/* ${ADDON_DIR}/
+  
+  # copy addon sshpass
+  cp -af ${FILE_DIR}/${TOOL_SSHPASS}/* ${ADDON_DIR}/
+  
   ###############################################################
 
   # copy web-configuration
@@ -82,7 +96,7 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
 
   #build system launcher
   chmod +x ${RCD_DIR}/${ADDON_NAME}
-
+   
 fi
 
 # synchronize filesystem before performing a reboot

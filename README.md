@@ -1,9 +1,15 @@
-# hm-tools
-<B>Achtung!</B> <br>
-Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B><br>
+﻿# hm-tools
+
+Dieses Addon funktioniert nur mit <B>RaspberryMatic</B>.<br>
+Geeignet für arm und x86.<br>
+Getestet mit Raspi2, Raspi3, Synology NAS (x86 "ova").
 
 ## Unterstützte CCU Modelle
 * [RaspberryMatic](http://homematic-forum.de/forum/viewtopic.php?f=56&t=26917)
+
+## Beschreibung:
+Dieses Addon erweitert RaspberryMatic um Konsolen-Programme, die im Standard-System nicht enthalten sind.<br>
+Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
 
 ### Im Plugin sind zur Zeit folgende Konsolen-Tools enthalten:
 
@@ -13,19 +19,21 @@ Dieses Addon funktioniert erst ab Version <B>RaspberryMatic 2.29.23.20171022</B>
 * htop
 * bash
 * imagemagick (libjpeg, libpng include)
+* sshpass
 
-### Anmerkung:
-Dieses Addon ist nur für Anwender, die wissen, für was man die Programme benötigt!<br>
-Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
-Wenn Euch die Programme nichts sagen, braucht Ihr dieses Addon nicht!!!<br>
+#### Hinweis:
+Dieses Addon schreibt nicht in den schreibgeschützten Bereich des Filesystem!<br>
+Nach der Installation ist ein Neustart erforderlich!<br>
+
+Viel Spaß mit hm-tools.
 
 ### Ihr braucht nicht alle Pakete!
 
-* Anleitung Paketauswahl.txt befolgen
+* Anleitung Paketauswahl.txt befolgen.
 
-### Hinweis zu mc:
+### Anmerkung zu mc:
 Wenn der Midnight Commander unter Putty die Ränder nicht als Linien, sondern als Buchstaben darstellt,<br>
-müssen folgende Änderung in den Verbindungseinstellungen des Putty vorgenommen werden.<br>
+müssen folgende Änderung in den Verbindungseinstellungen von Putty vorgenommen werden.<br>
 
 Unter:
 
@@ -39,13 +47,8 @@ einstellen.
 
 Das anschließende Speichern unter Session nicht vergessen.
 
-#### Hinweis:
-Dieses Addon schreibt nicht in den schreibgeschützten Bereich des Filesystem!
-
-Viel Spaß mit hm-tools.
-
 ## Licenses:
-All binaries are compiled from the Buildroot system source code.<br>
+All binaries are compiled from the buildroot system source code.<br>
 The source code of the compiled binaries was not modified.<br>
 <br>
 The source code of the binaries is subject to the following licenses:<br>
@@ -58,15 +61,21 @@ The source code of the binaries is subject to the following licenses:<br>
 | htop | GNU General Public License |
 | bash | GNU General Public License |
 | imagemagick | GNU General Public License |
+| sshpass | GNU General Public License |
 
 ### Autor
-2018 Frank Hettrich
+2019 Frank Hettrich
 
 ### Notice
-Danke an Jens Maus, für seine Unterstützung.
+Danke an Jens Maus für seine Unterstützung.<br>
+Thanks to Jens Maus for his support.
+
 ## RaspberryMatic
 * https://github.com/jens-maus/RaspberryMatic<br>
 <br>
-Ich hafte nicht für Schäden, die an eurer Hardware
+Ich hafte nicht für Schäden, die an eurer Hard- und Software
 durch die Verwendung dieses Addons entstehen.<br>
-Verwendung des Addon auf eigene Gefahr.
+Use the addon at your own risk!<br>
+Verwendung des Addon auf eigene Gefahr!<br>
+I'm not responsible for any hardware or software damage.<br>
+Use this addon at your own risk!

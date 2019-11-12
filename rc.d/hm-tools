@@ -13,26 +13,29 @@ info)
   echo "Info: <b>HM-Tools CCU Addon</b><br>"
   
   if [ -e $ADDON_DIR/bin/expect ]; then
-    echo "Info: expect Version: 5.45.3<br>"
+    echo "Info: expect Version: 5.45.4<br>"
   fi
   if [ -e $ADDON_DIR/bin/mc ]; then
     echo "Info: midnight commander Version: 4.8.20<br>"
   fi
   if [ -e $ADDON_DIR/bin/nano ]; then
-    echo "Info: nano Version: 2.9.0<br>"
+    echo "Info: nano Version: 4.3<br>"
   fi
   if [ -e $ADDON_DIR/bin/htop ]; then
-    echo "Info: htop Version: 2.0.2<br>"
+    echo "Info: htop Version: 2.2.0<br>"
   fi
   if [ -e $ADDON_DIR/bin/bash ]; then
     echo "Info: bash Version: 4.4.23<br>"
   fi
   if [ -e $ADDON_DIR/bin/magick ]; then
-    echo "Info: imagemagick Version: 7.0.7-10<br>"
+    echo "Info: imagemagick Version: 7.0.8-59<br>"
+  fi
+  if [ -e $ADDON_DIR/bin/sshpass ]; then
+    echo "Info: sshpass Version: 1.06<br>"
   fi
 
   echo "Info: <br>"
-  echo "Info: (c) 2017 Frank Hettrich<br>"
+  echo "Info: (c) 2019 Frank Hettrich<br>"
   echo "Info: <a href='https://github.com/fhetty/hm-tools'>https://github.com/fhetty/hm-tools</a>"
   echo "Version: $(cat ${ADDON_DIR}/VERSION)"
   echo "Name: HM-Tools<br>"

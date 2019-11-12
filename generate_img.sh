@@ -15,26 +15,55 @@ cp -a profile.d tmp/
 cp -a licenses tmp/
 
 ### Hier können einzelne Programme !!! abgewählt !!! werden ###
-# z.B. "cp -a expect tmp/"
-# wird "# cp -a expect tmp/"
-  
+# Bitte beachten, es gibt einen arm und eine x86 Bereich!
+# z.B. "cp -a arm/expect tmp/arm/"
+# wird "# cp -a arm/expect tmp/arm/"
+
+# *** arm based binarys arm (armv7l) *** 
+mkdir tmp/arm
 # copy expect
-cp -a expect tmp/
+cp -a arm/expect tmp/arm/
 
 # copy mc
-cp -a mc tmp/
+cp -a arm/mc tmp/arm/
 
 # copy nano
-cp -a nano tmp/
+cp -a arm/nano tmp/arm/
 
 # copy htop
-cp -a htop tmp/
+cp -a arm/htop tmp/arm/
 
 # copy bash
-cp -a bash tmp/
+cp -a arm/bash tmp/arm/
 
 # copy imagemagick
-cp -a imagemagick tmp/
+cp -a arm/imagemagick tmp/arm/
+
+# copy sshpass
+cp -a arm/sshpass tmp/arm/
+
+# *** amd64 based binarys x86 (i686) ***
+mkdir tmp/amd64
+# copy expect
+cp -a amd64/expect tmp/amd64/
+
+# copy mc
+cp -a amd64/mc tmp/amd64/
+
+# copy nano
+cp -a amd64/nano tmp/amd64/
+
+# copy htop
+cp -a amd64/htop tmp/amd64/
+
+# copy bash
+cp -a amd64/bash tmp/amd64/
+
+# copy imagemagick
+cp -a amd64/imagemagick tmp/amd64/
+
+# copy sshpass
+cp -a amd64/sshpass tmp/amd64/
 
 ###############################################################
 

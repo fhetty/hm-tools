@@ -2,7 +2,7 @@
 
 Bitte komplett lesen, dann loslegen!
 
-Wer nicht versteht, was hier erklärt ist, einfach das komplette auf dem git
+Am besten das komplette auf dem git
 bereitgestellte Release installieren!
 
 https://github.com/fhetty/hm-tools/releases
@@ -18,8 +18,9 @@ cd hm-tools
 In der Datei "generate_img.sh" folgenden Bereich editieren:
 
 ### Hier können einzelne Programme !!! abgewählt !!! werden ###
-# z.B. "cp -a expect tmp/"
-# wird "# cp -a expect tmp/"
+# Bitte beachten, es gibt einen arm und eine x86 Bereich!
+# z.B. "cp -a arm/expect tmp/arm/"
+# wird "# cp -a arm/expect tmp/arm/"
   
 # copy expect
 cp -a expect tmp/
@@ -27,15 +28,14 @@ cp -a expect tmp/
 # copy mc
 cp -a mc tmp/
 
-# copy nano
-cp -a nano tmp/
+.....
 
 ###############################################################
 
 Danach einfach die "generate_img.sh" ausführen.
 
 Jetzt habt Ihr eine fertige "hm-tools.x.x.x.tar.gz" Datei,
-die wie jedes Addon auf dem Homematic-Raspi installiert werden kann.
+die wie jedes andere Addon auf dem Homematic-Raspi installiert werden kann.
 
 ******************************************************************
 
@@ -55,17 +55,16 @@ das Dateiformat von Linux in Windows geändert wird!
 Dort diesen Bereich suchen, und die nicht benötigten Programme auskommentieren.
 
   ### Hier können einzelne Programme !!! abgewählt !!! werden ###
-  # z.B. "cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/"
-  # wird "# cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
+  # z.B. "cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/"
+  # wird "# cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/"
 
   # copy addon expect
-  cp -af ${TOOL_EXPECT}/* ${ADDON_DIR}/
+  cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/
 
   # copy addon mc
-  cp -af ${TOOL_MC}/* ${ADDON_DIR}/
-
-  # copy addon nano
-  cp -af ${TOOL_NANO}/* ${ADDON_DIR}/
+  cp -af ${FILE_DIR}/${TOOL_MC}/* ${ADDON_DIR}/
+  
+  .......
 
   ###############################################################
   
