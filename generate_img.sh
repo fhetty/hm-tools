@@ -19,7 +19,7 @@ cp -a licenses tmp/
 # z.B. "cp -a arm/expect tmp/arm/"
 # wird "# cp -a arm/expect tmp/arm/"
 
-# *** arm based binarys arm (armv7l) *** 
+# *** arm based binarys (armv7l) *** 
 mkdir tmp/arm
 # copy expect
 cp -a arm/expect tmp/arm/
@@ -42,28 +42,28 @@ cp -a arm/imagemagick tmp/arm/
 # copy sshpass
 cp -a arm/sshpass tmp/arm/
 
-# *** amd64 based binarys x86 (i686) ***
-mkdir tmp/amd64
+# *** x86 based binarys (i686) ***
+mkdir tmp/x86
 # copy expect
-cp -a amd64/expect tmp/amd64/
+cp -a x86/expect tmp/x86/
 
 # copy mc
-cp -a amd64/mc tmp/amd64/
+cp -a x86/mc tmp/x86/
 
 # copy nano
-cp -a amd64/nano tmp/amd64/
+cp -a x86/nano tmp/x86/
 
 # copy htop
-cp -a amd64/htop tmp/amd64/
+cp -a x86/htop tmp/x86/
 
 # copy bash
-cp -a amd64/bash tmp/amd64/
+cp -a x86/bash tmp/x86/
 
 # copy imagemagick
-cp -a amd64/imagemagick tmp/amd64/
+cp -a x86/imagemagick tmp/x86/
 
 # copy sshpass
-cp -a amd64/sshpass tmp/amd64/
+cp -a x86/sshpass tmp/x86/
 
 ###############################################################
 

@@ -53,7 +53,7 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
   cp -af ${LICENSES_DIR} ${ADDON_DIR}/
 
   if [ ${ARCH} == "i686" ]; then
-    FILE_DIR=amd64
+    FILE_DIR=x86
   else
     FILE_DIR=arm
   fi
