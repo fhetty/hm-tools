@@ -2,7 +2,7 @@
 
 Dieses Addon funktioniert nur mit <B>RaspberryMatic</B>.<br>
 Geeignet für arm und x86.<br>
-Getestet mit Raspi2, Raspi3, Synology NAS (x86 "ova").
+Getestet mit Raspi2, Raspi3, Raspi4, Synology NAS (x86 "ova").
 
 ## Unterstützte CCU Modelle
 * [RaspberryMatic](http://homematic-forum.de/forum/viewtopic.php?f=56&t=26917)
