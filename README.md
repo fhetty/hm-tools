@@ -13,15 +13,15 @@ Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
 
 ### Im Plugin sind zur Zeit folgende Konsolen-Tools enthalten:
 
-* expect
-* midnight commander (mc)
-* nano
-* htop
-* bash
-* imagemagick (libjpeg, libpng include)
-* sshpass
-* oathtoolkit
-* iostat
+* expect 5.45.4
+* midnight commander 4.8.20
+* nano 4.3
+* htop 2.2.0
+* bash 4.4.23
+* imagemagick 7.0.8-59 (libjpeg, libpng include)
+* sshpass 1.06
+* oathtoolkit 2.6.1
+* iostat 2.2
 
 #### Hinweis:
 Dieses Addon schreibt nicht in den schreibgeschützten Bereich des Filesystem!<br>
