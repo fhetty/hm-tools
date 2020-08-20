@@ -21,6 +21,7 @@ Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
 * imagemagick (libjpeg, libpng include)
 * sshpass
 * oathtoolkit
+* iostat
 
 #### Hinweis:
 Dieses Addon schreibt nicht in den schreibgeschützten Bereich des Filesystem!<br>
@@ -64,6 +65,7 @@ The source code of the binaries is subject to the following licenses:<br>
 | imagemagick | GNU General Public License |
 | sshpass | GNU General Public License |
 | oathtool | GNU General Public License |
+| iostat | GNU General Public License |
 
 ### Autor
 2020 Frank Hettrich

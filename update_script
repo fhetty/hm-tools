@@ -16,6 +16,7 @@ TOOL_BASH=bash
 TOOL_IMAGEMAGICK=imagemagick
 TOOL_SSHPASS=sshpass
 TOOL_OATHTOOL=oathtool
+TOOL_IOSTAT=iostat
 
 ARCH="$(uname -m)"
 
@@ -84,8 +85,11 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
   # copy addon sshpass
   cp -af ${FILE_DIR}/${TOOL_SSHPASS}/* ${ADDON_DIR}/
   
-    # copy addon oathtool
+  # copy addon oathtool
   cp -af ${FILE_DIR}/${TOOL_OATHTOOL}/* ${ADDON_DIR}/
+  
+  # copy addon iostat
+  cp -af ${FILE_DIR}/${TOOL_IOSTAT}/* ${ADDON_DIR}/
   
   ###############################################################
 
