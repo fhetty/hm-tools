@@ -42,6 +42,9 @@ cp -a arm/imagemagick tmp/arm/
 # copy sshpass
 cp -a arm/sshpass tmp/arm/
 
+# copy oathtool
+cp -a arm/oathtool tmp/arm/
+
 # *** x86 based binarys (i686) ***
 mkdir tmp/x86
 # copy expect
@@ -64,6 +67,9 @@ cp -a x86/imagemagick tmp/x86/
 
 # copy sshpass
 cp -a x86/sshpass tmp/x86/
+
+# copy oathtool
+cp -a x86/oathtool tmp/x86/
 
 ###############################################################
 

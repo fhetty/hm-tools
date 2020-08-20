@@ -20,6 +20,7 @@ Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
 * bash
 * imagemagick (libjpeg, libpng include)
 * sshpass
+* oathtoolkit
 
 #### Hinweis:
 Dieses Addon schreibt nicht in den schreibgeschützten Bereich des Filesystem!<br>
@@ -62,9 +63,10 @@ The source code of the binaries is subject to the following licenses:<br>
 | bash | GNU General Public License |
 | imagemagick | GNU General Public License |
 | sshpass | GNU General Public License |
+| oathtool | GNU General Public License |
 
 ### Autor
-2019 Frank Hettrich
+2020 Frank Hettrich
 
 ### Notice
 Danke an Jens Maus für seine Unterstützung.<br>
