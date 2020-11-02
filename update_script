@@ -54,7 +54,8 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
   # copy licenses
   cp -af ${LICENSES_DIR} ${ADDON_DIR}/
 
-  if [ ${ARCH} == "i686" ]; then
+  if [[ "${ARCH}" == "i686" ]] ||
+     [[ "${ARCH}" == "x86_64" ]]; then
     FILE_DIR=x86
   else
     FILE_DIR=arm
