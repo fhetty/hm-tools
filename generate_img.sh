@@ -22,7 +22,7 @@ cp -a licenses tmp/
 # *** arm based binarys (armv7l) *** 
 mkdir tmp/arm
 # copy expect
-cp -a arm/expect tmp/arm/
+#cp -a arm/expect tmp/arm/
 
 # copy mc
 cp -a arm/mc tmp/arm/
@@ -51,7 +51,7 @@ cp -a arm/iostat tmp/arm/
 # *** x86 based binarys (i686) ***
 mkdir tmp/x86
 # copy expect
-cp -a x86/expect tmp/x86/
+#cp -a x86/expect tmp/x86/
 
 # copy mc
 cp -a x86/mc tmp/x86/
