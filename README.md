@@ -13,7 +13,7 @@ Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
 
 ### Im Plugin sind zur Zeit folgende Konsolen-Tools enthalten:
 
-* expect 5.45.4
+* expect 5.45.4 (zur Zeit nicht enthalten)
 * midnight commander 4.8.20
 * nano 4.3
 * htop 2.2.0
