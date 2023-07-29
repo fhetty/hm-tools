@@ -13,7 +13,7 @@ info)
   echo "Info: <b>HM-Tools CCU Addon</b><br>"
   echo "Info: Kommandozeilentools<br>"
   echo "Info: <br>"
-  echo "Info: (c) 2020 Frank Hettrich<br>"
+  echo "Info: (c) 2023 Frank Hettrich<br>"
   echo "Info: <a href='https://github.com/fhetty/hm-tools'>https://github.com/fhetty/hm-tools</a>"
   echo "Version: $(cat ${ADDON_DIR}/VERSION)"
   echo "Name: HM-Tools<br>"
