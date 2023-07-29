@@ -16,14 +16,11 @@ cp -a licenses tmp/
 
 ### Hier können einzelne Programme !!! abgewählt !!! werden ###
 # Bitte beachten, es gibt einen arm und eine x86 Bereich!
-# z.B. "cp -a arm/expect tmp/arm/"
-# wird "# cp -a arm/expect tmp/arm/"
+# z.B. "cp -a arm/mc tmp/arm/"
+# wird "# cp -a arm/mc tmp/arm/"
 
 # *** arm based binarys (armv7l) *** 
 mkdir tmp/arm
-# copy expect
-#cp -a arm/expect tmp/arm/
-
 # copy mc
 cp -a arm/mc tmp/arm/
 
@@ -50,9 +47,6 @@ cp -a arm/iostat tmp/arm/
 
 # *** x86 based binarys (i686) ***
 mkdir tmp/x86
-# copy expect
-#cp -a x86/expect tmp/x86/
-
 # copy mc
 cp -a x86/mc tmp/x86/
 
