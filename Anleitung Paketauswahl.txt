@@ -19,14 +19,14 @@ In der Datei "generate_img.sh" folgenden Bereich editieren:
 
 ### Hier können einzelne Programme !!! abgewählt !!! werden ###
 # Bitte beachten, es gibt einen arm und eine x86 Bereich!
-# z.B. "cp -a arm/expect tmp/arm/"
-# wird "# cp -a arm/expect tmp/arm/"
-  
-# copy expect
-cp -a expect tmp/
+# z.B. "cp -a arm/mc tmp/arm/"
+# wird "# cp -a arm/mc tmp/arm/"
 
 # copy mc
-cp -a mc tmp/
+cp -a arm/mc tmp/arm/
+
+# copy nano
+cp -a arm/nano tmp/arm/
 
 .....
 
