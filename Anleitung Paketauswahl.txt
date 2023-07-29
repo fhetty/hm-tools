@@ -55,14 +55,14 @@ das Dateiformat von Linux in Windows geändert wird!
 Dort diesen Bereich suchen, und die nicht benötigten Programme auskommentieren.
 
   ### Hier können einzelne Programme !!! abgewählt !!! werden ###
-  # z.B. "cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/"
-  # wird "# cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/"
-
-  # copy addon expect
-  cp -af ${FILE_DIR}/${TOOL_EXPECT}/* ${ADDON_DIR}/
+  # z.B. "cp -af ${FILE_DIR}/${TOOL_MC}/* ${ADDON_DIR}/"
+  # wird "# cp -af ${FILE_DIR}/${TOOL_MC}/* ${ADDON_DIR}/"
 
   # copy addon mc
   cp -af ${FILE_DIR}/${TOOL_MC}/* ${ADDON_DIR}/
+
+  # copy addon nano
+  cp -af ${FILE_DIR}/${TOOL_NANO}/* ${ADDON_DIR}/
   
   .......
 
