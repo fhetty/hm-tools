@@ -43,7 +43,7 @@ xorriso_list() {
     r=$?
     test $r -gt 0 && return $r
 
-    echo "$lsl" | /bin/grep "^[-d]" | \
+    echo "$lsl" | grep "^[-d]" | \
     while read attr ln usr gr sz dt1 dt2 dt3 nm ; do
         len=$((${#nm} - 1))
         name=$(printf -- "$nm" | cut -c2-$len)  # remove quotes
@@ -93,38 +93,47 @@ xorriso_rm() {
 
 # tested to comply with isoinfo 2.0's output
 test_iso () {
+    ISOINFO=$(which isoinfo 2>/dev/null)
+    if test -z "$ISOINFO"; then
+        echo "isoinfo not found" >&2
+        return 1
+    fi
+
     CHARSET=$(locale charmap 2>/dev/null)
     if test -z "$CHARSET"; then
-        CHARSET=$(locale 2>/dev/null | /bin/grep LC_CTYPE | sed -n -e 's/.*\.\(.*\)"$/\1/p')
+        CHARSET=$(locale 2>/dev/null | grep LC_CTYPE | sed -n -e 's/.*\.\(.*\)"$/\1/p')
     fi
     if test -n "$CHARSET"; then
         CHARSET=$(echo "$CHARSET" | tr '[A-Z]' '[a-z]' | sed -e 's/^iso-/iso/')
-        isoinfo -j $CHARSET -i /dev/null 2>&1 | /bin/grep "Iconv not yet supported\|Unknown charset" >/dev/null && CHARSET=
+        $ISOINFO -j $CHARSET -i /dev/null 2>&1 | grep "Iconv not yet supported\|Unknown charset" >/dev/null && CHARSET=
     fi
     if test -n "$CHARSET"; then
         JOLIET_OPT="-j $CHARSET -J"
     else
         JOLIET_OPT="-J"
     fi
-    ISOINFO="isoinfo -R"
 
-    ISOINFO_D_I="$(isoinfo -d -i "$1" 2>/dev/null)"
+    ISOINFO_D_I="$($ISOINFO -d -i "$1" 2>/dev/null)"
+    ISOINFO="$ISOINFO -R"
 
-    echo "$ISOINFO_D_I" | /bin/grep "UCS level 1\|NO Joliet" > /dev/null || ISOINFO="$ISOINFO $JOLIET_OPT"
+    echo "$ISOINFO_D_I" | grep "UCS level 1\|NO Joliet" > /dev/null || ISOINFO="$ISOINFO $JOLIET_OPT"
 
-    if [ $(echo "$ISOINFO_D_I" | /bin/grep "Joliet with UCS level 3 found" | wc -l) = 1 \
-        -a $(echo "$ISOINFO_D_I" | /bin/grep "NO Rock Ridge" | wc -l) = 1 ] ; then
+    if [ $(echo "$ISOINFO_D_I" | grep "Joliet with UCS level 3 found" | wc -l) = 1 \
+        -a $(echo "$ISOINFO_D_I" | grep "NO Rock Ridge" | wc -l) = 1 ] ; then
         SEMICOLON="YES"
     fi
 }
 
 mcisofs_list () {
+    local lsl r
+
     # left as a reminder to implement compressed image support =)
     case "$1" in
       *.lz)  MYCAT="lzip -dc";;
       *.lz4) MYCAT="lz4 -dc";;
       *.lzma) MYCAT="lzma -dc";;
       *.xz)  MYCAT="xz -dc";;
+      *.zst) MYCAT="zstd -dc";;
       *.bz2) MYCAT="bzip2 -dc";;
       *.gz)  MYCAT="gzip -dc";;
       *.z)   MYCAT="gzip -dc";;
@@ -132,7 +141,11 @@ mcisofs_list () {
       *)     MYCAT="cat";;
     esac
 
-    $ISOINFO -l -i "$1" 2>/dev/null | gawk -v SEMICOLON=$SEMICOLON '
+    lsl=$($ISOINFO -l -i "$1"  2>/dev/null)
+    r=$?
+    test $r -gt 0 && return $r
+
+    echo "$lsl" | gawk -v SEMICOLON=$SEMICOLON '
 BEGIN {
   dir="";
   # Pattern to match 8 first fields.
@@ -182,8 +195,8 @@ shift
 case "$cmd" in
   list)
     xorriso_list "$@" || {
-        test_iso "$@";
-        mcisofs_list "$@";
+        test_iso "$@" || exit 1
+        mcisofs_list "$@" || exit 1
     }
     exit 0
     ;;
@@ -213,8 +226,8 @@ case "$cmd" in
     ;;
   copyout)
     xorriso_copyout "$@" || {
-        test_iso "$@";
-        mcisofs_copyout "$@";
+        test_iso "$@" || exit 1
+        mcisofs_copyout "$@" || exit 1
     }
     exit 0
     ;;
