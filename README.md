@@ -13,13 +13,13 @@ Eine Anleitung der einzelnen Anwendungen findet Ihr im Netz.<br>
 
 ### Im Plugin sind zur Zeit folgende Konsolen-Tools enthalten:
 
-* midnight commander 4.8.20
-* nano 4.3
-* htop 2.2.0
-* bash 4.4.23
-* imagemagick 7.0.8-59 (libjpeg, libpng include)
-* sshpass 1.06
-* oathtoolkit 2.6.1
+* midnight commander 4.8.29
+* nano 7.2
+* htop 3.2.2
+* bash 5.2.15
+* imagemagick 7.1.0-51 (libjpeg, libpng include)
+* sshpass 1.09
+* oathtoolkit 2.6.9
 * iostat 2.2
 
 #### Hinweis:
