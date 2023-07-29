@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
 
   You may not use this file except in compliance with the License.  You may
@@ -410,7 +410,7 @@ struct _ImageInfo
     quality;            /* compression quality */
 
   char
-    *sampling_factor,   /* JPEG write sampling factor */
+    *sampling_factor,   /* Chroma subsampling ratio string */
     *server_name,       /* X windows server name - display/animate */
     *font,              /* DUP for draw_info */
     *texture,           /* montage/display background tile */
@@ -496,19 +496,6 @@ struct _ImageInfo
 
 extern MagickExport ChannelType
   SetImageChannelMask(Image *,const ChannelType);
-
-extern MagickExport const char
-  DefaultTileGeometry[],
-  DefaultTileLabel[],
-  LoadImageTag[],
-  LoadImagesTag[],
-  PSDensityGeometry[],
-  PSPageGeometry[],
-  SaveImageTag[],
-  SaveImagesTag[];
-
-extern MagickExport const double
-  DefaultResolution;
 
 extern MagickExport ExceptionType
   CatchImageException(Image *);

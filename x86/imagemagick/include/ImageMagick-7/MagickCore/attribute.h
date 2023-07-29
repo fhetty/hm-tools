@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 2002 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -38,8 +38,12 @@ extern MagickExport MagickBooleanType
   SetImageDepth(Image *,const size_t,ExceptionInfo *),
   SetImageType(Image *,const ImageType,ExceptionInfo *);
 
+extern MagickExport PointInfo
+  *GetImageConvexHull(const Image *,size_t *,ExceptionInfo *),
+  *GetImageMinimumBoundingBox(Image *,size_t *,ExceptionInfo *);
+
 extern MagickExport RectangleInfo
-  GetImageBoundingBox(const Image *,ExceptionInfo *exception);
+  GetImageBoundingBox(const Image *,ExceptionInfo *);
 
 extern MagickExport size_t
   GetImageDepth(const Image *,ExceptionInfo *),

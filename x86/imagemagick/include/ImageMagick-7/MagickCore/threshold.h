@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -46,6 +46,8 @@ extern MagickExport MagickBooleanType
   BilevelImage(Image *,const double,ExceptionInfo *),
   BlackThresholdImage(Image *,const char *,ExceptionInfo *),
   ClampImage(Image *,ExceptionInfo *),
+  ColorThresholdImage(Image *,const PixelInfo *,const PixelInfo *,
+    ExceptionInfo *),
   ListThresholdMaps(FILE *,ExceptionInfo *),
   OrderedDitherImage(Image *,const char *,ExceptionInfo *),
   PerceptibleImage(Image *,const double,ExceptionInfo *),

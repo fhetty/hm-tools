@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuremap [
+  <!ELEMENT configuremap (configure)+>
+  <!ATTLIST configuremap xmlns CDATA #FIXED ''>
+  <!ELEMENT configure EMPTY>
+  <!ATTLIST configure xmlns CDATA #FIXED '' name NMTOKEN #REQUIRED
+    value CDATA #REQUIRED>
+]>
+<!--
+  ImageMagick build configuration.
+-->
+<configuremap>
+  <configure name="CC" value="/home/hetty/homematic_x86/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-gcc"/>
+  <configure name="CFLAGS" value="-I/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/include/libpng16   -I/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/include/freetype2 -I/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/include/libpng16  -I/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/include/freetype2 -I/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/include/libpng16     -Wall -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 -g0 -D_FORTIFY_SOURCE=1 -fexceptions -pthread -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16"/>
+  <configure name="CODER_PATH" value="/usr/local/addons/hm-tools/lib/ImageMagick-7.1.0/modules-Q16HDRI/coders"/>
+  <configure name="CONFIGURE_PATH" value="/usr/local/addons/hm-tools/etc/ImageMagick-7/"/>
+  <configure name="CONFIGURE" value="./configure  '--target=x86_64-buildroot-linux-gnu' '--host=x86_64-buildroot-linux-gnu' '--build=x86_64-pc-linux-gnu' '--prefix=/usr' '--exec-prefix=/usr' '--sysconfdir=/etc' '--localstatedir=/var' '--program-prefix=' '--disable-gtk-doc' '--disable-gtk-doc-html' '--disable-doc' '--disable-docs' '--disable-documentation' '--with-xmlto=no' '--with-fop=no' '--disable-dependency-tracking' '--enable-ipv6' '--disable-nls' '--disable-static' '--enable-shared' '--program-transform-name=s,,,' '--disable-opencl' '--disable-openmp' '--without-djvu' '--without-dps' '--without-flif' '--without-fpx' '--without-gslib' '--without-gvc' '--without-heic' '--without-jbig' '--without-jxl' '--without-lqr' '--without-openexr' '--without-openjp2' '--without-perl' '--without-raqm' '--without-wmf' '--without-x' '--with-gs-font-dir=/usr/share/fonts/gs' '--prefix=/usr/local/addons/hm-tools' '--exec-prefix=/usr/local/addons/hm-tools' '--sysconfdir=/usr/local/addons/hm-tools/etc' '--with-frozenpaths=/usr/local/addons/hm-tools/etc' '--with-fontconfig' '--with-freetype' '--with-jpeg' '--without-lcms' '--with-png' '--without-raw' '--without-rsvg' '--without-xml' '--without-zip' '--with-zstd' '--without-pango' '--without-tiff' '--with-lzma' '--without-fftw' '--without-webp' '--with-zlib' '--without-bzlib' '--with-utilities' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=x86_64-buildroot-linux-gnu' 'target_alias=x86_64-buildroot-linux-gnu' 'CC=/home/hetty/homematic_x86/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-gcc' 'CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 -g0 -D_FORTIFY_SOURCE=1' 'LDFLAGS=' 'CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64' 'CPP=/home/hetty/homematic_x86/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-cpp' 'PKG_CONFIG=/home/hetty/homematic_x86/buildroot/output/host/bin/pkg-config' 'CXX=/home/hetty/homematic_x86/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-g++' 'CXXFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 -g0 -D_FORTIFY_SOURCE=1'"/>
+  <configure name="COPYRIGHT" value="Copyright (C) 1999 ImageMagick Studio LLC"/>
+  <configure name="CPPFLAGS" value="-I/usr/local/addons/hm-tools/include/ImageMagick-7"/>
+  <configure name="CXXFLAGS" value="-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 -g0 -D_FORTIFY_SOURCE=1 -pthread"/>
+  <configure name="CXX" value="/home/hetty/homematic_x86/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-g++"/>
+  <configure name="DEFS" value="-DHAVE_CONFIG_H"/>
+  <configure name="DELEGATES" value="fontconfig freetype jng jpeg lzma png ps zlib zstd"/>
+  <configure name="DISTCHECK_CONFIG_FLAGS" value="'CC=/home/hetty/homematic_x86/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-gcc' 'CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 -g0 -D_FORTIFY_SOURCE=1' 'CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64' 'CXX=/home/hetty/homematic_x86/buildroot/output/host/bin/x86_64-buildroot-linux-gnu-g++' 'LDFLAGS='  --disable-deprecated  --with-quantum-depth=16  --with-jemalloc=no  --with-umem=no  --with-bzlib=no  --with-zip=no  --with-autotrace=no  --with-dps=no  --with-fftw=no  --with-flif=no  --with-fpx=no  --with-djvu=no  --with-raqm=no  --with-gslib=no  --with-fontpath=  --with-gs-font-dir=/usr/share/fonts/gs  --with-gvc=no  --with-heic=no  --with-lcms=no  --with-openjp2=no  --with-lqr=no  --with-openexr=no  --with-pango=no  --with-libraw=no  --with-rsvg=no  --with-tiff=no  --with-webp=no  --with-wmf=no  --with-xml=no  --with-perl=no "/>
+  <configure name="DOCUMENTATION_PATH" value="/usr/local/addons/hm-tools/share/doc/ImageMagick-7"/>
+  <configure name="EXEC-PREFIX" value="/usr/local/addons/hm-tools"/>
+  <configure name="EXECUTABLE_PATH" value="/usr/local/addons/hm-tools/bin"/>
+  <configure name="FEATURES" value="DPC HDRI Cipher"/>
+  <configure name="FILTER_PATH" value="/usr/local/addons/hm-tools/lib/ImageMagick-7.1.0/modules-Q16HDRI/filters"/>
+  <configure name="GIT_REVISION" value="1cf41df5d:20221013" />
+  <configure name="HOST" value="x86_64-buildroot-linux-gnu"/>
+  <configure name="INCLUDE_PATH" value="/usr/local/addons/hm-tools/include/ImageMagick-7"/>
+  <configure name="LDFLAGS" value="-L/usr/local/addons/hm-tools/lib "/>
+  <configure name="LIBRARY_PATH" value="/usr/local/addons/hm-tools/lib/ImageMagick-7.1.0"/>
+  <configure name="LIBS" value="    -L/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/lib -lfreetype   -ljpeg    -L/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/lib -lpng16       -L/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/lib -lfontconfig -lfreetype           -L/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/lib -llzma          -L/home/hetty/homematic_x86/buildroot/output/host/bin/../x86_64-buildroot-linux-gnu/sysroot/usr/lib -lz      -lm    -lpthread  "/>
+  <configure name="LIB_VERSION_NUMBER" value="7,1,0,51"/>
+  <configure name="LIB_VERSION" value="0x710"/>
+  <configure name="NAME" value="ImageMagick"/>
+  <configure name="PCFLAGS" value="-DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16"/>
+  <configure name="PREFIX" value="/usr/local/addons/hm-tools"/>
+  <configure name="QuantumDepth" value="16"/>
+  <configure name="RELEASE_DATE" value="2022-10-13"/>
+  <configure name="SHAREARCH_PATH" value="/usr/local/addons/hm-tools/lib/ImageMagick-7.1.0/config-Q16HDRI"/>
+  <configure name="SHARE_PATH" value="/usr/local/addons/hm-tools/share/ImageMagick-7"/>
+  <configure name="TARGET_CPU" value="x86_64"/>
+  <configure name="TARGET_OS" value="linux-gnu"/>
+  <configure name="TARGET_VENDOR" value="buildroot"/>
+  <configure name="VERSION" value="7.1.0"/>
+  <configure name="WEBSITE" value="https://imagemagick.org"/>
+</configuremap>

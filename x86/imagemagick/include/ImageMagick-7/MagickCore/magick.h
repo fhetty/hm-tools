@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -24,6 +24,12 @@ extern "C" {
 
 #include <stdarg.h>
 #include "MagickCore/semaphore.h"
+
+#if defined(__cplusplus) || defined(c_plusplus)
+# define magick_module  _module   /* reserved word in C++(20) */
+#else
+# define magick_module  module
+#endif
 
 typedef enum
 {
@@ -101,7 +107,9 @@ extern MagickExport char
 
 extern MagickExport const char
   *GetMagickDescription(const MagickInfo *),
-  *GetMagickMimeType(const MagickInfo *);
+  *GetMagickMimeType(const MagickInfo *),
+  *GetMagickModuleName(const MagickInfo *),
+  *GetMagickName(const MagickInfo *);
 
 extern MagickExport DecodeImageHandler
   *GetImageDecoder(const MagickInfo *) magick_attribute((__pure__));

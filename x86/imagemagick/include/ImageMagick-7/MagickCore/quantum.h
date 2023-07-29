@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
 
   You may not use this file except in compliance with the License.  You may
@@ -18,6 +18,7 @@
 #ifndef MAGICKCORE_QUANTUM_H
 #define MAGICKCORE_QUANTUM_H
 
+#include <float.h>
 #include "MagickCore/image.h"
 #include "MagickCore/semaphore.h"
 
@@ -75,22 +76,23 @@ typedef enum
   RGBOQuantum,
   RGBPadQuantum,
   RGBQuantum,
-  YellowQuantum
+  YellowQuantum,
+  MultispectralQuantum
 } QuantumType;
 
 typedef struct _QuantumInfo
   QuantumInfo;
 
-static inline Quantum ClampToQuantum(const MagickRealType value)
+static inline Quantum ClampToQuantum(const MagickRealType quantum)
 {
 #if defined(MAGICKCORE_HDRI_SUPPORT)
-  return((Quantum) value);
+  return((Quantum) quantum);
 #else
-  if (value <= 0.0f)
+  if ((IsNaN(quantum) != 0) || (quantum <= 0.0))
     return((Quantum) 0);
-  if (value >= (MagickRealType) QuantumRange)
+  if (quantum >= (MagickRealType) QuantumRange)
     return(QuantumRange);
-  return((Quantum) (value+0.5f));
+  return((Quantum) (quantum+0.5));
 #endif
 }
 
@@ -100,7 +102,7 @@ static inline unsigned char ScaleQuantumToChar(const Quantum quantum)
 #if !defined(MAGICKCORE_HDRI_SUPPORT)
   return((unsigned char) quantum);
 #else
-  if (quantum <= 0.0)
+  if ((IsNaN(quantum) != 0) || (quantum <= 0.0))
     return(0);
   if (quantum >= 255.0)
     return(255);
@@ -113,7 +115,7 @@ static inline unsigned char ScaleQuantumToChar(const Quantum quantum)
 #if !defined(MAGICKCORE_HDRI_SUPPORT)
   return((unsigned char) (((quantum+128UL)-((quantum+128UL) >> 8)) >> 8));
 #else
-  if (quantum <= 0.0)
+  if ((IsNaN(quantum) != 0) || (quantum <= 0.0))
     return(0);
   if ((quantum/257.0) >= 255.0)
     return(255);
@@ -127,7 +129,7 @@ static inline unsigned char ScaleQuantumToChar(const Quantum quantum)
   return((unsigned char) ((quantum+MagickULLConstant(8421504))/
     MagickULLConstant(16843009)));
 #else
-  if (quantum <= 0.0)
+  if ((IsNaN(quantum) != 0) || (quantum <= 0.0))
     return(0);
   if ((quantum/16843009.0) >= 255.0)
     return(255);
@@ -140,7 +142,7 @@ static inline unsigned char ScaleQuantumToChar(const Quantum quantum)
 #if !defined(MAGICKCORE_HDRI_SUPPORT)
   return((unsigned char) (quantum/72340172838076673.0+0.5));
 #else
-  if (quantum <= 0.0)
+  if ((IsNaN(quantum) != 0) || (quantum <= 0.0))
     return(0);
   if ((quantum/72340172838076673.0) >= 255.0)
     return(255);

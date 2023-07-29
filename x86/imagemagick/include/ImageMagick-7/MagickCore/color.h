@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -36,6 +36,22 @@ typedef enum
   MVGCompliance = 0x0008,
   AllCompliance = 0x7fffffff
 } ComplianceType;
+
+typedef enum
+{
+  UndefinedIlluminant = 5,
+  AIlluminant = 0,
+  BIlluminant = 1,
+  CIlluminant = 2,
+  D50Illuminant = 3,
+  D55Illuminant = 4,
+  D65Illuminant = 5,
+  D75Illuminant = 6,
+  EIlluminant = 7,
+  F2Illuminant = 8,
+  F7Illuminant = 9,
+  F11Illuminant = 10
+} IlluminantType;
 
 typedef struct _ColorInfo
 {

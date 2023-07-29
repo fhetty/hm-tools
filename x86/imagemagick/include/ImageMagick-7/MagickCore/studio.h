@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
 
   You may not use this file except in compliance with the License.  You may
@@ -55,10 +55,9 @@ extern "C" {
 #  define STDC
 #endif
 
-#if defined(__cplusplus) || defined(c_plusplus)
-# define magick_module  _module   /* reserved word in C++(20) */
-#else
-# define magick_module  module
+/* Define to 1 if assertions should be disabled. */
+#if defined(MAGICKCORE_NDEBUG)
+#define NDEBUG 1
 #endif
 
 #include <stdarg.h>
@@ -134,7 +133,9 @@ extern "C" {
 #include <ws2tcpip.h>
 #endif
 #include <windows.h>
+#ifdef _MSC_VER
 #pragma comment (lib, "ws2_32.lib")
+#endif
 #endif
 #if defined(MAGICKCORE_HAVE_SYS_SYSLIMITS_H)
 # include <sys/syslimits.h>
@@ -143,13 +144,12 @@ extern "C" {
 # include <arm/limits.h>
 #endif
 
-#if defined(MAGICKCORE__OPENCL)
 #if defined(MAGICKCORE_HAVE_CL_CL_H)
 #  include <CL/cl.h>
+#  define MAGICKCORE_OPENCL_SUPPORT  1
 #endif
 #if defined(MAGICKCORE_HAVE_OPENCL_CL_H)
 #  include <OpenCL/cl.h>
-#endif
 #  define MAGICKCORE_OPENCL_SUPPORT  1
 #endif
 
@@ -179,9 +179,6 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 #if defined(MAGICKCORE_WINDOWS_SUPPORT) || defined(MAGICKCORE_POSIX_SUPPORT)
 # include <sys/types.h>
 # include <sys/stat.h>
-# if defined(MAGICKCORE_HAVE_SYS_TIMEB_H)
-# include <sys/timeb.h>
-# endif
 # if defined(MAGICKCORE_POSIX_SUPPORT)
 #  if defined(MAGICKCORE_HAVE_SYS_NDIR_H) || defined(MAGICKCORE_HAVE_SYS_DIR_H) || defined(MAGICKCORE_HAVE_NDIR_H)
 #   define dirent direct
@@ -223,17 +220,16 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 # if defined(MAGICKCORE_HAVE_SYS_SENDFILE_H)
 #  include <sys/sendfile.h>
 # endif
+# if defined(MAGICKCORE_HAVE_SYS_SOCKET_H)
+#  include <sys/socket.h>
+# endif
+# if defined(MAGICKCORE_HAVE_SYS_UIO_H)
+#  include <sys/uio.h>
+# endif
 #endif
 #else
 # include <types.h>
 # include <stat.h>
-# if defined(macintosh)
-#  if !defined(DISABLE_SIOUX)
-#   include <SIOUX.h>
-#   include <console.h>
-#  endif
-#  include <unix.h>
-# endif
 # include "MagickCore/magick-type.h"
 #endif
 
@@ -313,9 +309,6 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
 #  define SetNotifyHandlers \
     SetErrorHandler(NTErrorHandler); \
     SetWarningHandler(NTWarningHandler)
-#  if !defined(MAGICKCORE_HAVE_TIFFCONF_H)
-#    define HAVE_TIFFCONF_H
-#  endif
 # endif
 
 #endif
@@ -348,6 +341,8 @@ extern int vsnprintf(char *,size_t,const char *,va_list);
   Magick defines.
 */
 #define MagickMaxRecursionDepth  600
+#define MAGICK_SSIZE_MAX  (SSIZE_MAX)
+#define MAGICK_SSIZE_MIN  (-(SSIZE_MAX)-1)
 #define Swap(x,y) ((x)^=(y), (y)^=(x), (x)^=(y))
 #if defined(_MSC_VER)
 # define DisableMSCWarning(nr) __pragma(warning(push)) \
