@@ -676,6 +676,9 @@
         <message name="KernelWidthMustBeAnOddNumber">
           kernel width must be an odd number
         </message>
+        <message name="LabelExpected">
+          label expected
+        </message>
         <message name="MapImageRequired">
           map image required
         </message>
@@ -775,6 +778,9 @@
         </message>
         <message name="UnbalancedParenthesis">
           unbalanced parenthesis
+        </message>
+        <message name="UndefinedVariable">
+          undefined variable
         </message>
         <message name="UnrecognizedAttribute">
           unrecognized attribute
@@ -995,6 +1001,9 @@
         </message>
         <message name="NoSuchElement">
           no such element in list
+        </message>
+        <message name="SetReadOnlyProperty">
+          attempt to set read-only property
         </message>
         <message name="UnknownImageProperty">
           unknown image property
@@ -1333,6 +1342,11 @@
         average image sequence
       </message>
     </Average>
+    <Blur>
+      <message name="Image">
+        blur image
+      </message>
+    </Blur>
     <Chop>
       <message name="Image">
         chop image

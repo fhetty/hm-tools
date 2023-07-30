@@ -35,22 +35,22 @@ while test $# -gt 0; do
       echo $exec_prefix
       ;;
     --version)
-      echo '7.0.8 Q16 HDRI'
+      echo '7.1.0-51 Q16 HDRI'
       ;;
     --cflags)
-      /home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/pkg-config --cflags MagickWand
+      /home/hetty/homematic_tinker/buildroot/output/host/bin/pkg-config --cflags MagickWand-7.Q16HDRI
       ;;
     --cxxflags)
-      /home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/pkg-config --cflags MagickWand
+      /home/hetty/homematic_tinker/buildroot/output/host/bin/pkg-config --cflags MagickWand-7.Q16HDRI
       ;;
     --cppflags)
-      /home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/pkg-config --cflags MagickWand
+      /home/hetty/homematic_tinker/buildroot/output/host/bin/pkg-config --cflags MagickWand-7.Q16HDRI
       ;;
     --ldflags)
-      /home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/pkg-config --libs MagickWand
+      /home/hetty/homematic_tinker/buildroot/output/host/bin/pkg-config --libs MagickWand-7.Q16HDRI
       ;;
     --libs)
-      /home/hetty/RaspberryMatic_raspi/build-raspmatic_rpi3/host/bin/pkg-config --libs MagickWand
+      /home/hetty/homematic_tinker/buildroot/output/host/bin/pkg-config --libs MagickWand-7.Q16HDRI
       ;;
     *)
       echo "${usage}" 1>&2

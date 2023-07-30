@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -47,7 +47,10 @@ typedef enum
   ZipCompression,
   ZipSCompression,
   ZstdCompression,
-  WebPCompression
+  WebPCompression,
+  DWAACompression,
+  DWABCompression,
+  BC7Compression
 } CompressionType;
 
 typedef struct _Ascii85Info

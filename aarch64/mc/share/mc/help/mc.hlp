@@ -49,6 +49,7 @@ Topics:
   ChmodChmod
   ChownChown
   Advanced ChownAdvanced Chown
+  ChattrChattr
   File OperationsFile Operations
   Mask Copy/RenameMask Copy/Rename
   Select/Unselect FilesSelect/Unselect Files
@@ -64,7 +65,6 @@ Topics:
     FIle transfer over SHell filesystemFIle transfer over SHell filesystem
     SFTP (SSH File Transfer Protocol) filesystemSFTP (SSH File Transfer Protocol) filesystem
     Undelete File SystemUndelete File System
-    SMB File SystemSMB File System
     EXTernal File SystemEXTernal File System
   ColorsColors
   SkinsSkins
@@ -112,9 +112,6 @@ OPTIONS
 -d, --nomouse
         Disable mouse support.
 
--D N, --debuglevel=N
-        Save the debug level for SMB VFS. N is in 0-10 range.
-
 -e [file], --edit[=file]
         Start the internal editor. If the file is specified, open it on startup. See also mcedit (1).
 
@@ -143,49 +140,13 @@ OPTIONS
         Print the last working directory to the specified file. This option is not meant to be used directly. Instead, it's used from a special shell script that automatically changes the current directory of the shell to the last directory Midnight Commander was in. Source the file /usr/local/addons/hm-tools/libexec/mc/mc.sh (bash and zsh users) or /usr/local/addons/hm-tools/libexec/mc.csh (tcsh users) respectively to define mc as an alias to the appropriate shell script.
 
 -s, --slow
-        Set alternative mode drawing of frameworks. If the section [Lines] is not filled, the symbol for the pseudographics frame is a space, otherwise the frame characters are taken from following parameters. You can redefine the following variables:
-
-lefttop left-top corner
-
-righttop
-        right-top corner
-
-centertop
-        center-top cross
-
-centerbottom
-        center-bottom cross
-
-leftbottom
-        left-bottom corner
-
-rightbottom
-        right-bottom corner
-
-leftmiddle
-        left-middle cross
-
-rightmiddle
-        right-middle cross
-
-centermiddle
-        center cross
-
-horiz   default horizontal line
-
-vert    default vertical line
-
-thinhoriz
-        thin horizontal line
-
-thinvert
-        thin vertical line
+        Turn on the slow terminal mode, in this mode the program will not draw expensive line drawing characters and will toggle verbose mode off.
 
 -S arg, --skin=arg
         Specify a name of skin in the command line. Technology of skins is documented in the SkinsSkins section.
 
 -t, --termcap
-        Used only if the code was compiled with Slang and terminfo: it makes Midnight Commander use the value of the TERMCAP variable for the terminal information instead of the information on the system wide terminal database
+        Used only if the code was compiled with S-Lang and terminfo: it makes Midnight Commander use the value of the TERMCAP variable for the terminal information instead of the information on the system wide terminal database
 
 -u, --nosubshell
         Disable use of the concurrent shell (only makes sense if Midnight Commander has been built with concurrent shell support).
@@ -239,7 +200,7 @@ Some commands in Midnight Commander involve the use of the Control (sometimes 
 C-<chr> means hold the Control key while typing the character <chr>. Thus C-f would be: hold the Control key and type f.
 
 Alt-<chr>
-        means hold the Meta or Alt key down while typing <chr>. If there is no Meta or Alt key, type ESC, release it, then type the character <chr>.
+        means hold the Meta or Alt key down while typing <chr>. If there is no Meta or Alt key, type Esc, release it, then type the character <chr>.
 
 S-<chr> means hold the Shift key down while typing <chr>.
 
@@ -317,7 +278,7 @@ This section lists the keys which operate on the directory panels. If you want t
 Insert, C-t
         to tag files you may use the Insert key (the kich1 terminfo sequence). To untag files, just retag a tagged file.
 
-M-e     to change charset of panel you may use M-e (Alt-e). Recoding is made from selected codepage into system codepage. To cancel the recoding you may select "directory up" (..) in active panel. To cancel the charsets in all directories, select "No translation " in the dialog of encodings.
+Alt-e   to change charset of panel you may use Alt-e (M-e). Recoding is made from selected codepage into system codepage. To cancel the recoding, select "No translation" in the dialog of encodings.
 
 Alt-g, Alt-r, Alt-j
         used to select the top file in a panel, the middle file and the bottom one, respectively.
@@ -362,7 +323,7 @@ This section lists the keys which operate on the directory panels. If you want t
 
 Alt-u   moves to the next directory in the history, equivalent to clicking the > with the mouse.
 
-Alt-Shift-h, Alt-H
+Alt-S-h, Alt-H
         displays the directory history, equivalent to depressing the 'v' with the mouse.[Quick search]
 Quick search
 
@@ -382,7 +343,7 @@ This section lists keys which are useful to avoid excessive typing when entering
 
 C-Enter same a Alt-Enter. May not work on remote systems and some terminals.
 
-C-Shift-Enter
+C-S-Enter
         copy the full path name of the currently selected file to the command line. May not work on remote systems and some terminals.
 
 Alt-Tab does the filename, command, variable, username and hostname completionCompletion for you.
@@ -570,13 +531,15 @@ The eight sort orders are by name, by extension, by modification time, by access
 By default directories are sorted before files but this can be changed from the Panel optionsPanel options menu (option Mix all files).[Filter...]
 Filter...
 
-The filter command allows you to specify a shell pattern (for example *.tar.gz) which the files must match to be shown. Regardless of the filter pattern, the directories and the links to directories are always shown in the directory panel.[Reread]
+The filter command allows you to specify a shell pattern (for example *.tar.gz) which the files and directories must match to be shown. The input lineInput Line Keys allow enter the pattern of file/directory names that will be shown in the panel.
+
+When Files only checkbox is on, only files will be matched to the filter, and all directories will be shown. Otherwise, as files as directories will be filtered. When Shell Patterns checkbox is on, the regular expression is much like the filename globbing in the shell (* standing for zero or more characters and ? standing for one character). Otherwise, the matching of files/directoris is done with normal regular expressions (see ed(1)). When Case sensitive checkbox is on, the filtering will be case sensitive characters. Otherwise, the case will be ignored.[Reread]
 Reread
 
 The reread command reload the list of files in the directory. It is useful if other processes have created or removed files.[File Menu]
 File Menu
 
-Midnight Commander uses the F1 - F10 keys as keyboard shortcuts for commands appearing in the file menu. The escape sequences for the function keys are terminfo capabilities kf1 trough kf10. On terminals without function key support, you can achieve the same functionality by pressing the ESC key and then a number in the range 1 through 9 and 0 (corresponding to F1 to F9 and F10 respectively).
+Midnight Commander uses the F1 - F10 keys as keyboard shortcuts for commands appearing in the file menu. The escape sequences for the function keys are terminfo capabilities kf1 trough kf10. On terminals without function key support, you can achieve the same functionality by pressing the Esc key and then a number in the range 1 through 9 and 0 (corresponding to F1 to F9 and F10 respectively).
 
 The File menu has the following commands (keyboard shortcuts in parentheses):
 
@@ -606,7 +569,7 @@ See parameters for external editorParameters for external editor or viewer fo
 
 Copy (F5, F15)
 
-Press F5 to pop up an input dialog to copy the currently selected file (or the tagged files, if there is at least one file tagged) to the directory/filename you specify in the input dialog. The destination defaults to the directory in the non-selected panel. Space for destination file may be preallocated relative to preallocate_space configure option. During this process, you can press C-c or ESC to abort the operation. For details about source mask (which will be usually either * or ^\(.*\)$ depending on setting of Use shell patterns) and possible wildcards in the destination see Mask copy/renameMask Copy/Rename.
+Press F5 to pop up an input dialog to copy the currently selected file (or the tagged files, if there is at least one file tagged) to the directory/filename you specify in the input dialog. The destination defaults to the directory in the non-selected panel. Space for destination file may be preallocated relative to preallocate_space configure option. During this process, you can press C-c or Esc to abort the operation. For details about source mask (which will be usually either * or ^\(.*\)$ depending on setting of Use shell patterns) and possible wildcards in the destination see Mask copy/renameMask Copy/Rename.
 
 F15 (usually F15) is similar, but defaults to the directory in the selected panel. It always operates on the selected file, regardless of any tagged files.
 
@@ -656,7 +619,7 @@ Pop up an input dialog and creates the directory specified.
 
 Delete (F8)
 
-Delete the currently selected file or the tagged files in the currently selected panel. During the process, you can press C-c or ESC to abort the operation.
+Delete the currently selected file or the tagged files in the currently selected panel. During the process, you can press C-c or Esc to abort the operation.
 
 Quick cd (Alt-c) Use the quick cdQuick cd command if you have full command line and want to cd somewhere.
 
@@ -668,9 +631,9 @@ This is used to select (tag) a group of files. Midnight Commander will prompt fo
 
 Used to unselect a group of files. This is the opposite of the "Select group" command.
 
-Quit (F10, Shift-F10)
+Quit (F10, S-F10)
 
-Terminate Midnight Commander. Shift-F10 is used when you want to quit and you are using the shell wrapper. Shift-F10 will not take you to the last directory you visited with Midnight Commander, instead it will stay at the directory where you started Midnight Commander.[Quick cd]
+Terminate Midnight Commander. S-F10 is used when you want to quit and you are using the shell wrapper. S-F10 will not take you to the last directory you visited with Midnight Commander, instead it will stay at the directory where you started Midnight Commander.[Quick cd]
 Quick cd
 
 This command is useful if you have a full command line and want to cdThe cd internal command somewhere without having to yank and paste the command line. This command pops up a small dialog, where you enter everything you would enter after cd on the command line and then you press enter. This features all the things that are already in the internal cd commandThe cd internal command.[Command Menu]
@@ -707,39 +670,51 @@ To get rid of long delays, Midnight Commander creates the tree figure by scannin
 
 You can use the following keys:
 
-General movement keysGeneral Movement Keys are accepted.
+        General movement keysGeneral Movement Keys are accepted.
 
-Enter. In the directory tree, exits the directory tree and changes to this directory in the current panel. In the tree view, changes to this directory in the other panel and stays in tree view mode in the current panel.
+Enter.  In the directory tree, exits the directory tree and changes to this directory in the current panel. In the tree view, changes to this directory in the other panel and stays in tree view mode in the current panel.
 
-C-r, F2 (Rescan). Rescan this directory. Use this when the tree figure is out of date: it is missing subdirectories or shows some subdirectories which don't exist any more.
+C-r, F2 (Rescan).
+        Rescan this directory. Use this when the tree figure is out of date: it is missing subdirectories or shows some subdirectories which don't exist any more.
 
-F3 (Forget). Delete this directory from the tree figure. Use this to remove clutter from the figure. If you want the directory back to the tree figure press F2 in its parent directory.
+F3 (Forget).
+        Delete this directory from the tree figure. Use this to remove clutter from the figure. If you want the directory back to the tree figure press F2 in its parent directory.
 
-F4 (Static/Dynamic). Toggle between the dynamic navigation mode (default) and the static navigation mode.
+F4 (Static/Dynamic).
+        Toggle between the dynamic navigation mode (default) and the static navigation mode.
 
 In the static navigation mode you can use the Up and Down keys to select a directory. All known directories are shown.
 
 In the dynamic navigation mode you can use the Up and Down keys to select a sibling directory, the Left key to move to the parent directory, and the Right key to move to a child directory. Only the parent, sibling and children directories are shown, others are left out. The tree figure changes dynamically as you traverse.
 
-F5 (Copy). Copy the directory.
+F5 (Copy).
+        Copy the directory.
 
-F6 (RenMov). Move the directory.
+F6 (RenMov).
+        Move the directory.
 
-F7 (Mkdir). Make a new directory below this directory.
+F7 (Mkdir).
+        Make a new directory below this directory.
 
-F8 (Delete). Delete this directory from the file system.
+F8 (Delete).
+        Delete this directory from the file system.
 
-C-s, Alt-s. Search the next directory matching the search string. If there is no such directory these keys will move one line down.
+C-s, Alt-s.
+        Search the next directory matching the search string. If there is no such directory these keys will move one line down.
 
-C-h, Backspace. Delete the last character of the search string.
+C-h, Backspace.
+        Delete the last character of the search string.
 
-Any other character. Add the character to the search string and move to the next directory which starts with these characters. In the tree view you must first activate the search mode by pressing C-s. The search string is shown in the mini status line.
+Any other character.
+        Add the character to the search string and move to the next directory which starts with these characters. In the tree view you must first activate the search mode by pressing C-s. The search string is shown in the mini status line.
 
 The following actions are available only in the directory tree. They aren't supported in the tree view.
 
-F1 (Help). Invoke the help viewer and show this section.
+F1 (Help).
+        Invoke the help viewer and show this section.
 
-Esc, F10. Exit the directory tree. Do not change the directory.
+Esc, F10.
+        Exit the directory tree. Do not change the directory.
 
 The mouse is supported. A double-click behaves like Enter. See also the section on mouse supportMouse Support.[Find File]
 Find File
@@ -788,32 +763,7 @@ The Directory hotlist command shows the labels of the directories in the directo
 This makes cd to often used directories faster. You may consider using the CDPATH variable as described in internal cd commandThe cd internal command description.[Edit Extension File]
 Edit Extension File
 
-This will invoke your editor on the file ~/.config/mc/mc.ext. The format of this file following:
-
-All lines starting with # or empty lines are thrown away.
-
-Lines starting in the first column should have following format:
-
-keyword/expr, i.e. everything after the slash until new line is expr.
-
-keyword can be:
-
-shell   - expr is an extension (no wildcards). File matches it its name ends with expr. Example: shell/.tar matches *.tar.
-
-regex   - expr is a regular expression. File matches if its name matches the regular expression.
-
-directory
-        - expr is a regular expression. File matches if it is a directory and its name matches the regular expression.
-
-type    - expr is a regular expression. File matches if the output of file %f without the initial "filename:" part matches regular expression expr.
-
-default - matches any file. expr is ignored.
-
-include - denotes a common section. expr is the name of the section.
-
-Other lines should start with a space or tab and should be of the format: keyword=command (with no spaces around =), where keyword should be: Open (invoked on Enter or double click), View (F3), Edit (F4) or Include (to add rules from the common section). command is any one-line shell command, with the simple macro substitutionMacro Substitution.
-
-Rules are matched from top to bottom, thus the order is important. If the appropriate action is missing, search continues as if this rule didn't match (i.e. if a file matches the first and second entry and View action is missing in the first one, then on pressing F3 the View action from the second entry will be used). default should match all the actions.[Background jobs]
+This will invoke your editor on the file ~/.config/mc/mc.ext.ini. If this file does not exist and you are not root, it will be copied from /usr/local/addons/hm-tools/etc/mc/mc.ext.ini. If you are root, you can choose the file to edit: user's ~/.config/mc/mc.ext.ini or system-wide /usr/local/addons/hm-tools/etc/mc/mc.ext.ini. The format of this file is described in detail in it.[Background jobs]
 Background Jobs
 
 This lets you control the state of any background Midnight Commander process (only copy and move files operations can be done in the background). You can stop, restart and kill a background job from here.[Edit Menu File]
@@ -956,11 +906,11 @@ The options in this dialog are divided into several groups: "File operation opti
 
 Esc key mode.
 
-By default, Midnight Commander treats the ESC key as a key prefix. Therefore, you should press Esc code twice to exit a dialog. But there is a possibility to use a single press of ESC key for that action.
+By default, Midnight Commander treats the Esc key as a key prefix. Therefore, you should press Esc code twice to exit a dialog. But there is a possibility to use a single press of Esc key for that action.
 
-Single press. By default this option is disabled. If you'll enable it, the ESC key will act as a prefix key for set up time interval (see Timeout option below), and if no extra keys have arrived, then the ESC key is interpreted as a cancel key (ESC ESC).
+Single press. By default this option is disabled. If you'll enable it, the Esc key will act as a prefix key for set up time interval (see Timeout option below), and if no extra keys have arrived, then the Esc key is interpreted as a cancel key (Esc Esc).
 
-Timeout. This options is used to setup the time interval (in microseconds) for single press of ESC key. By default, this interval is one second (1000000 microseconds). Also the timeout can be set via KEYBOARD_KEY_TIMEOUT_US environment variable (also in microseconds), which has higher priority than Timeout option value.
+Timeout. This options is used to setup the time interval (in microseconds) for single press of Esc key. By default, this interval is one second (1000000 microseconds). Also the timeout can be set via KEYBOARD_KEY_TIMEOUT_US environment variable (also in microseconds), which has higher priority than Timeout option value.
 
 Pause after run
 
@@ -992,7 +942,9 @@ After executing your commands, Midnight Commander can pause, so that you can exa
 
 Cd follows links. This option, if set, causes Midnight Commander to follow the logical chain of directories when changing current directory either in the panels, or using the cd command. This is the default behavior of bash. When unset, Midnight Commander follows the real directory structure, so cd .. if you've entered that directory through a link will move you to the current directory's real parent and not to the directory where the link was present.
 
-Safe delete. If this option is enabled, deleting files and directory hotlist entries unintentionally becomes more difficult. The default selection in the confirmation dialogs for deletion changes from "Yes" to "No". This option is disabled by default.
+Safe delete. If this option is enabled, deleting files and directory hotlist entries unintentionally becomes more difficult. The default selection in the confirmation dialogs for deletion changes from Yes to No. This option is disabled by default.
+
+Safe overwrite. If this option is enabled, overwriting files unintentionally becomes more difficult. The default selection in the overwrite confirmation dialog changes from Yes to No. This option is disabled by default.
 
 Auto save setup. If this option is enabled, when you exit Midnight Commander, the configurable options of Midnight Commander are saved in the ~/.config/mc/ini file.[Layout]
 Layout
@@ -1068,9 +1020,11 @@ Confirmation
 In this dialog you configure the confirmation options for file deletion, overwriting files, execution by pressing enter, quitting the program, directory hotlist entries deletion and history cleanup.[Appearance]
 Appearance
 
-In this dialog you can select the skin to be used.
+In this dialog you can select the skin to be used and enable shadow for dialogs and drop down menus.
 
-See the SkinsSkins section for technical details about the skin definition files.[Display bits]
+See the SkinsSkins section for technical details about the skin definition files.
+
+Shadows. If this option is enabled, all dialogs and drop down menus will have a shadow.[Display bits]
 Display bits
 
 This is used to configure the range of visible characters on the screen. This setting may be 7-bits if your terminal/curses supports only seven output bits, ISO-8859-1 displays all the characters in the ISO-8859-1 map and full 8 bits is for those terminals that can display full 8 bit characters.[Learn keys]
@@ -1109,14 +1063,14 @@ You can define an FTP proxy host for doing FTP. Note that most modern firewalls 
 
 If Always use ftp proxy is not set, you can use the exclamation sign to enable proxy for certain hosts. See FTP File SystemFTP File System for examples.
 
-If this option is set, the program will do two things: consult the /usr/local/addons/hm-tools/lib/mc/mc.no_proxy file for lines containing host names that are local (if the host name starts with a dot, it is assumed to be a domain) and to assume that any hostnames without dots in their names are directly accessible. All other hosts will be accessed through the specified FTP proxy.
+If this option is set, the program will do two things: consult the /usr/local/addons/hm-tools/etc/mc/mc.no_proxy file for lines containing host names that are local (if the host name starts with a dot, it is assumed to be a domain) and to assume that any hostnames without dots in their names are directly accessible. All other hosts will be accessed through the specified FTP proxy.
 
 You can enable using ~/.netrc file, which keeps login names and passwords for ftp servers. See netrc (5) for the description of the .netrc format.
 
 Use passive mode enables using FTP passive mode, when the connection for data transfer is initiated by the client, not by the server. This option is recommended and enabled by default. If this option is turned off, the data connection is initiated by the server. This may not work with some firewalls.[Save Setup]
 Save Setup
 
-At startup, Midnight Commander will try to load initialization information from the ~/.config/mc/ini file. If this file doesn't exist, it will load the information from the system-wide configuration file, located in /usr/local/addons/hm-tools/share/mc/mc.ini. If the system-wide configuration file doesn't exist, MC uses the default settings.
+At startup, Midnight Commander tries to load initialization information from the ~/.config/mc/ini file. If this file doesn't exist, the system-wide file /usr/local/addons/hm-tools/etc/mc/mc.ini is used. If this file doesn't exist, the system-wide file /usr/local/addons/hm-tools/share/mc/mc.ini is used. If this file doesn't exist, MC uses the default settings.
 
 The Save Setup command creates the ~/.config/mc/ini file by saving the current settings of the Left, RightLeft and Right Menus and OptionsOptions Menu menus.
 
@@ -1191,7 +1145,7 @@ The macros are:
 %%      The % character
 
 %{some text}
-        Prompt for the substitution. An input box is shown and the text inside the braces is used as a prompt. The macro is substituted by the text typed by the user. The user can press ESC or F10 to cancel. This macro doesn't work on the command line yet.
+        Prompt for the substitution. An input box is shown and the text inside the braces is used as a prompt. The macro is substituted by the text typed by the user. The user can press Esc or F10 to cancel. This macro doesn't work on the command line yet.
 
 %var{ENV:default}
         If environment variable ENV is unset, the default is substituted. Otherwise, the value of ENV is substituted.[The subshell support]
@@ -1205,7 +1159,9 @@ When the subshell support is active, Midnight Commander will spawn a concurrent 
 
 ash/dash users (BusyBox or Debian) may specify startup commands in ~/.local/share/mc/ashrc (fallback ~/.profile).
 
-tcsh, zsh, fish users cannot specify mc-specific startup commands at present. They have to rely on shell-specific startup files.
+zsh users may specify startup commands in ~/.local/share/mc/.zshrc (fallback ~/.zshrc).
+
+tcsh, fish users cannot specify mc-specific startup commands at present. They have to rely on shell-specific startup files.
 
 The following paragraphs are relevant only when the subshell support is active:
 
@@ -1248,7 +1204,30 @@ Chown
 The Chown command is used to change the owner/group of a file. The hot key for this command is C-x o.[Advanced Chown]
 Advanced Chown
 
-The Advanced Chown command is the ChmodChmod and ChownChown command combined into one window. You can change the permissions and owner/group of files at once.[File Operations]
+The Advanced Chown command is the ChmodChmod and ChownChown command combined into one window. You can change the permissions and owner/group of files at once.[Chattr]
+Chattr
+
+The Chattr window is used to change the attributes of a group of files and directories on a Linux file system. It can be invoked with the C-x e key combination.
+
+Not all attributes are supported or utilized by all filesystems. List of available attribute flags is represented as a set of check buttons which correspond to the attribute flags (see chattr(1) for details). As you change the attribute flags, you can see the symbolic value change below file name.
+
+To move between the widgets (buttons and check buttons) use the arrow keys or the Tab key. To change the state of the check buttons or to select a button use Space.
+
+To set the attributes, use the Enter key.
+
+When working with a group of files or directories, you just click on the flags you want to set or clear. Once you have selected the flags you want to change, you select one of the action buttons (Set marked or Clear marked).
+
+Finally, to set the attributes exactly to those specified, you can use the [Set all] button, which will act on all the tagged files.
+
+[Marked all] set only marked attributes to all selected files.
+
+[Set marked] set marked flags in attributes of all selected files.
+
+[Clean marked] clear marked flags in attributes of all selected files.
+
+[Set] set the attributes of one file.
+
+[Cancel] cancel the Chattr command.[File Operations]
 File Operations
 
 When you copy, move or delete files, Midnight Commander shows the file operations dialog. It shows the files currently being processed and uses up to three progress bars. The file bar indicates the percentage of the current file that has been processed so far. The count bar shows how many of the tagged files have been handled. The bytes bar indicates the percentage of the total size of the tagged files that has been handled. If the verbose option is off, the file and bytes bars are not shown.
@@ -1330,65 +1309,74 @@ The mcdiff is a visual diff tool. You can compare two files and edit them in-pla
 
 Following shortcuts are available in internal diff viewer of Midnight Commander.
 
-F1 Invoke the built-in hypertext help viewer.
+F1      Invoke the built-in hypertext help viewer.
 
-F2 Save modified files.
+F2      Save modified files.
 
-F4 Edit file of the left panel in the internal editor.
+F4      Edit file of the left panel in the internal editor.
 
-F14 Edit file of the right panel in the internal editor.
+F14     Edit file of the right panel in the internal editor.
 
-F5 Merge the current hunk. Only the current hunk will be merged.
+F5      Merge the current hunk. Only the current hunk will be merged.
 
-F7 Start search.
+F7      Start search.
 
-F17 Continue search.
+F17     Continue search.
 
-F10, Esc, q Exit from diff viewer.
+F10, Esc, q
+        Exit from diff viewer.
 
-Alt-s, s Toggle show of hunk status.
+Alt-s, s
+        Toggle show of hunk status.
 
-Alt-n, l Toggle show of line numbers.
+Alt-n, l
+        Toggle show of line numbers.
 
-f Maximize left panel.
+f       Maximize left panel.
 
-= Make panels equal in width.
+=       Make panels equal in width.
 
-> Reduce the size of the right panel.
+>       Reduce the size of the right panel.
 
-< Reduce the size of the left panel.
+<       Reduce the size of the left panel.
 
-c Toggle show of trailing carriage return (CR) symbol as ^M.
+c       Toggle show of trailing carriage return (CR) symbol as ^M.
 
-2, 3, 4, 8 Set tabulation size
+2, 3, 4, 8
+        Set tabulation size
 
-C-u Swap contents of diff panels.
+C-u     Swap contents of diff panels.
 
-C-r Refresh the screen.
+C-r     Refresh the screen.
 
-C-o Switch to the subshell and show the command screen.
+C-o     Switch to the subshell and show the command screen.
 
-Enter, Space, n Find next diff hunk.
+Enter, Space, n
+        Find next diff hunk.
 
-Backspace, p Find previous diff hunk.
+Backspace, p
+        Find previous diff hunk.
 
-g Go to line.
+g       Go to line.
 
-Down Scroll one line forward.
+Down    Scroll one line forward.
 
-Up Scroll one line backward.
+Up      Scroll one line backward.
 
-PageUp Move one page up.
+PageUp  Move one page up.
 
-PageDown Mves one page down.
+PageDown
+        Mves one page down.
 
-Home, A1 Moves to the line beginning.
+Home, A1
+        Moves to the line beginning.
 
-End Moves to the line end.
+End     Moves to the line end.
 
-C-Home Move to the file beginning.
+C-Home  Move to the file beginning.
 
-C-End, C1 Move to the file end.[Internal File Viewer]
+C-End, C1
+        Move to the file end.[Internal File Viewer]
 Internal File Viewer
 
 The internal file viewer provides two display modes: ASCII and hex. To toggle between modes, use the F4 key.
@@ -1403,72 +1391,76 @@ Numbers are always interpreted in hex. In the example above, "34" is interpreted
 
 Here is a listing of the actions associated with each key that the Midnight Commander handles in the internal file viewer.
 
-F1 Invoke the built-in hypertext help viewer.
+F1      Invoke the built-in hypertext help viewer.
 
-F2 Toggle the wrap mode.
+F2      Toggle the wrap mode.
 
-F4 Toggle the hex mode.
+F4      Toggle the hex mode.
 
-F5 Goto line. This will prompt you for a line number and will display that line.
+F5      Goto. You can specify a line number, offset or percentage of file size of position that you want to view.
 
-F6, /. Regular expression search.
+F7, /, ?
+        Start search. These keys call the dialog window that allows you to set up the search options. If key is ? the "Backwards" option is on.
 
-?, Reverse regular expression search.
+C-s     Continue forward search.
 
-F7 Normal search / hex mode search.
+C-r     Continue reverse search.
 
-C-s, F17, n. Start normal search if there was no previous search expression else find next match.
+F17, n  Continue search in the chosen direction.
 
-C-r. Start reverse search if there was no previous search expression else find next match.
+N       Temporary change the search direction: backwards if forward search is chosen, and vice versa.
 
-F8 Toggle Raw/Parsed mode: This will show the file as found on disk or if a processing filter has been specified in the mc.ext file, then the output from the filter. Current mode is always the other than written on the button label, since on the button is the mode which you enter by that key.
+F8      Toggle Raw/Parsed mode: This will show the file as found on disk or if a processing filter has been specified in the mc.ext.ini file, then the output from the filter. Current mode is always the other than written on the button label, since on the button is the mode which you enter by that key.
 
-F9 Toggle the format/unformat mode: when format mode is on the viewer will interpret some string sequences to show bold and underline with different colors. Also, on button label is the other mode than current.
+F9      Toggle the format/unformat mode: when format mode is on the viewer will interpret some string sequences to show bold and underline with different colors. Also, on button label is the other mode than current.
 
-F10, Esc. Exit the internal file viewer.
+F10, Esc.
+        Exit the internal file viewer.
 
-next-page, space, C-v. Scroll one page forward.
+PageDown, space, C-v.
+        Scroll one page forward.
 
-prev-page, Alt-v, C-b, Backspace. Scroll one page backward.
+PageUp, Alt-v, C-b, Backspace.
+        Scroll one page backward.
 
-down-key Scroll one line forward.
+Down    Scroll one line forward.
 
-up-key Scroll one line backward.
+Up      Scroll one line backward.
 
-C-l Refresh the screen.
+C-l     Refresh the screen.
 
-C-o Switch to the subshell and show the command screen.
+C-o     Switch to the subshell and show the command screen.
 
 "[n] m" Set the mark n.
 
 "[n] r" Jump to the mark n.
 
-C-f Jump to the next file.
+C-f     Jump to the next file.
 
-C-b Jump to the previous file.
+C-b     Jump to the previous file.
 
-Alt-r Toggle the ruler.
+Alt-r   Toggle the ruler.
 
-Alt-e to change charset of displayed text may use M-e (Alt-e). Recoding is made from selected codepage into system codepage. To cancel the recoding you may select "<No translation>" in charset selection dialog.
+Alt-e   to change charset of displayed text may use Alt-e (M-e). Recoding is made from selected codepage into system codepage. To cancel the recoding you may select "<No translation>" in charset selection dialog.
 
 It's possible to instruct the file viewer how to display a file, look at the Edit Extension File sectionEdit Extension File[Internal File Editor]
 Internal File Editor
 
 The internal file editor is a full-featured full screen editor. It can edit files up to 64 megabytes. It is possible to edit binary files. The internal file editor is invoked using F4 if the use_internal_edit option is set in the initialization file.
 
-The features it presently supports are: block copy, move, delete, cut, paste; key for key undo; pull-down menus; file insertion; macro commands; regular expression search and replace; shift-arrow text highlighting (if supported by the terminal); insert-overwrite toggle; word wrap; autoindent; tunable tab size; syntax highlighting for various file types; and an option to pipe text blocks through shell commands like indent and ispell.
+The features it presently supports are: block copy, move, delete, cut, paste; key for key undo; pull-down menus; file insertion; macro commands; regular expression search and replace; S-arrow text highlighting (if supported by the terminal); insert-overwrite toggle; word wrap; autoindent; tunable tab size; syntax highlighting for various file types; and an option to pipe text blocks through shell commands like indent and ispell.
 
 Sections:
 
         Options of editor in ini-fileInternal File Editor / options
 
-The editor is very easy to use and requires no tutoring. To see what keys do what, just consult the appropriate pull-down menu. Other keys are: Shift movement keys do text highlighting. Ctrl-Ins copies to the file mcedit.clip and Shift-Ins pastes from mcedit.clip. Shift-Del cuts to mcedit.clip, and Ctrl-Del deletes highlighted text. Mouse highlighting also works, and you can override the mouse as usual by holding down the shift key while dragging the mouse to let normal terminal mouse highlighting work.
+The editor is very easy to use and requires no tutoring. To see what keys do what, just consult the appropriate pull-down menu. Other keys are: Shift movement keys do text highlighting. C-Ins copies to the file mcedit.clip and S-Ins pastes from mcedit.clip. S-Del cuts to mcedit.clip, and C-Del deletes highlighted text. Mouse highlighting also works, and you can override the mouse as usual by holding down the shift key while dragging the mouse to let normal terminal mouse highlighting work.
 
-To define a macro, press Ctrl-R and then type out the key strokes you want to be executed. Press Ctrl-R again when finished. You can then assign the macro to any key you like by pressing that key. The macro is executed when you press Ctrl-A and then the assigned key. The macro is also executed if you press Meta, Ctrl, or Esc and the assigned key, provided that the key is not used for any other function. Once defined, the macro commands go into the file ~/.local/share/mc/mcedit/mcedit.macros You can delete a macro by deleting the appropriate line in this file.
+To define a macro, press C-R and then type out the key strokes you want to be executed. Press C-R again when finished. You can then assign the macro to any key you like by pressing that key. The macro is executed when you press C-A and then the assigned key. The macro is also executed if you press Meta, Ctrl, or Esc and the assigned key, provided that the key is not used for any other function. Once defined, the macro commands go into the file ~/.local/share/mc/mcedit/mcedit.macros You can delete a macro by deleting the appropriate line in this file.
 
-To change charset of displayed text may use M-e (Alt-e). Recoding is made from selected codepage into system codepage. To cancel the recoding you may select "<No translation>" in charset selection dialog.
+To change charset of displayed text may use Alt-e (M-e). Recoding is made from selected codepage into system codepage. To cancel the recoding you may select "<No translation>" in charset selection dialog.
 
-F19 will format the currently highlighted block (plain text or C or C++ code or another). This is controlled by the file /usr/local/addons/hm-tools/share/mc/edit.indent.rc which is copied to ~/.local/share/mc/mcedit/edit.indent.rc in your home directory the first time you use it.
+F19 will format the currently highlighted block (plain text or C or C++ code or another). This is controlled by the file /usr/local/addons/hm-tools/share/mc/edit.indent.rc which is copied to ~/.local/share/mc/mcedit/edit.indent.rc in your home directory the first time you use it.
 
 The editor also displays non-us characters (160+). When editing binary files, you should set display bits to 7 bits in the options menu to keep the spacing clean.[Internal File Editor / options]
 Options of editor in ini-file
@@ -1496,12 +1488,12 @@ Attempt to perform completion on the text before current position. MC attempts c
 
 Filename, username, variable and hostname completion works on all input lines, command completion is command line specific. If the completion is ambiguous (there are more different possibilities), MC beeps and the following action depends on the setting of the Complete: show allConfiguration option in the ConfigurationConfiguration dialog. If it is enabled, a list of all possibilities pops up next to the current position and you can select with the arrow keys and Enter the correct entry. You can also type the first letters in which the possibilities differ to move to a subset of all possibilities and complete as much as possible. If you press Alt-Tab again, only the subset will be shown in the listbox, otherwise the first item which matches all the previous characters will be highlighted. As soon as there is no ambiguity, dialog disappears, but you can hide it by canceling keys Esc, F10 and left and right arrow keys. If Complete: show allConfiguration is disabled, the dialog pops up only if you press Alt-Tab for the second time, for the first time MC just beeps.
 
-Apply escaping of ?, * and & symbols (as fB\?fR, fB\*fR, fB\&fR ) in filenames to disallow use them as metasymbols in regular expressions when substitution is performed in the input line.[Virtual File System]
+Apply escaping of ?, *, and & symbols (as \?, \*, and \&) in filenames to disallow use them as metasymbols in regular expressions when substitution is performed in the input line.[Virtual File System]
 Virtual File System
 
 Midnight Commander is provided with a code layer to access the file system; this code layer is known as the virtual file system switch. The virtual file system switch allows Midnight Commander to manipulate files not located on the Unix file system.
 
-Currently, Midnight Commander is packaged with some Virtual File Systems (VFS): the local file system, used for accessing the regular Unix file system; the ftpfs, used to manipulate files on remote systems with the FTP protocol; the tarfs, used to manipulate tar and compressed tar files; the undelfs, used to recover deleted files on ext2 file systems (the default file system for Linux systems), fish (for manipulating files over shell connections such as rsh and ssh). If the code was compiled with sftpfs (for manipulating files over SFTP connections). If the code was compiled with smbfs support, you can manipulate files on remote systems with the SMB (CIFS) protocol.
+Currently, Midnight Commander is packaged with some Virtual File Systems (VFS): the local file system, used for accessing the regular Unix file system; the ftpfs, used to manipulate files on remote systems with the FTP protocol; the tarfs, used to manipulate tar and compressed tar files; the undelfs, used to recover deleted files on ext2 file systems (the default file system for Linux systems), fish (for manipulating files over shell connections such as rsh and ssh). If the code was compiled with sftpfs (for manipulating files over SFTP connections).
 
 A generic extfs (EXTernal virtual File System) is provided in order to easily expand VFS capabilities using scripts and external software.
 
@@ -1531,7 +1523,7 @@ The tar file system provides you with read-only access to your tar files and com
 
 /filename.tar/utar://[dir-inside-tar]
 
-The mc.ext file already provides a shortcut for tar files, this means that usually you just point to a tar file and press return to enter into the tar file, see the Edit Extension FileEdit Extension File section for details on how this is done.
+The mc.ext.ini file already provides a shortcut for tar files, this means that usually you just point to a tar file and press return to enter into the tar file, see the Edit Extension FileEdit Extension File section for details on how this is done.
 
 Examples:
 
@@ -1578,7 +1570,14 @@ Examples:
     sftp://joe:password@want.compression.edu/private
     sftp://joe@noncompressed.ssh.edu/private
     sftp://joe@somehost.ssh.edu:2222/private
-[Undelete File System]
+
+When establishing the connection, server key fingerprint is verified using the ~/.ssh/known_hosts file. If the host/key pair is not found or the host is found, but the key doesn't match, an appropriate message is shown. There are three buttons in the message dialog:
+
+[Yes] add new host/key pair to the ~/.ssh/known_hosts file and continue.
+
+[Ignore] do not add new host/key pair to the ~/.ssh/known_hosts file, but continue nevertheless (at you own risk).
+
+[No] abort connection.[Undelete File System]
 Undelete File System
 
 On Linux systems, if you asked configure to use the ext2fs undelete facilities, you will have the undelete file system available. Recovery of deleted files is only available on ext2 file systems. The undelete file system is just an interface to the ext2fs library to retrieve all of the deleted files names on an ext2fs and provides and to extract the selected files into a regular partition.
@@ -1589,34 +1588,20 @@ For example, to recover deleted files on the second partition of the first SCSI 
 
     undel://sda2
 
-It may take a while for the undelfs to load the required information before you start browsing files there.[SMB File System]
-SMB File System
-
-The smbfs allows you to manipulate files on remote machines with SMB (or CIFS) protocol. These include Windows for Workgroups, Windows 9x/ME/XP, Windows NT, Windows 2000 and Samba. To actually use it, you may try to use the panel command "SMB link..." (accessible from the menubar) or you may directly change your current directory to it using the cd command to a path name that looks like this:
-
-smb://[user@]machine[/service][/remote-dir]
-
-The user, service and remote-dir elements are optional. The user, domain and password can be specified in an input dialog.
-
-Examples:
-
-    smb://machine/Share
-    smb://other_machine
-    smb://guest@machine/Public/Irlex
-[EXTernal File System]
+It may take a while for the undelfs to load the required information before you start browsing files there.[EXTernal File System]
 EXTernal File System
 
 extfs allows you to integrate numerous features and file types into GNU Midnight Commander in an easy way, by writing scripts.
 
 Extfs filesystems can be divided into two categories:
 
-1. Stand-alone filesystems, which are not associated with any existing file. They represent certain system-wide data as a directory tree. You can invoke them by typing 'cd fsname://' where fsname is an extfs short name (see below). Examples of such filesystems include audio (list audio tracks on the CD) or apt (list of all Debian packages in the system).
+1. Stand-alone filesystems, which are not associated with any existing file. They represent certain system-wide data as a directory tree. You can invoke them by typing "cd fsname://" where fsname is an extfs short name (see below). Examples of such filesystems include audio (list audio tracks on the CD) or apt (list of all Debian packages in the system).
 
 For example, to list CD-Audio tracks on your CD-ROM drive, type
 
   cd audio://
 
-2. 'Archive' filesystems (like rpm, patchfs and more), which represent contents of a file as a directory tree. It can consist of 'real' files compressed in an archive (urar, rpm) or virtual files, like messages in a mailbox (mailfs) or parts of a patch (patchfs). To access such filesystems 'fsname://' should be appended to the archive name. Note that the archive itself can be on another vfs.
+2. 'Archive' filesystems (like rpm, patchfs and more), which represent contents of a file as a directory tree. It can consist of 'real' files compressed in an archive (urar, rpm) or virtual files, like messages in a mailbox (mailfs) or parts of a patch (patchfs). To access such filesystems fsname:// should be appended to the archive name. Note that the archive itself can be on another vfs.
 
 For example, to list contents of a zip archive documents.zip type
 
@@ -1662,7 +1647,7 @@ Colors
 
 Midnight Commander will try to detect if your terminal supports color using the terminal database and your terminal name. Sometimes it gets confused, so you may force color mode or disable color mode using the -c and -b flag respectively.
 
-If the program is compiled with the Slang screen manager instead of ncurses, it will also check the variable COLORTERM, if it is set, it has the same effect as the -c flag.
+If the program is compiled with the S-Lang screen manager instead of ncurses, it will also check the variable COLORTERM, if it is set, it has the same effect as the -c flag.
 
 You may specify terminals that always force color mode by adding the color_terminals variable to the Colors section of the initialization file. This will prevent Midnight Commander from trying to detect if your terminal supports color. Example:
 
@@ -1670,7 +1655,7 @@ You may specify terminals that always force color mode by adding the color_term
 color_terminals=linux,xterm
 color_terminals=terminal-name1,terminal-name2...
 
-The program can be compiled with both ncurses and slang, ncurses does not provide a way to force color mode: ncurses uses just the information in the terminal database.
+The program can be compiled with both ncurses and S-Lang, ncurses does not provide a way to force color mode: ncurses uses just the information in the terminal database.
 
 Midnight Commander provides a way to change the default colors. Currently the colors are configured using the environment variable MC_COLOR_TABLE or the Colors section in the initialization file.
 
@@ -1885,7 +1870,7 @@ Draw lines
 
 Lines sets in section [Lines] into skin-file. By default single lines are used, but you may redefine to usage of any utf-8 symbols (like to lines, for example).
 
-WARNING!!! When you build Midnight Commander with the Ncurses screen library usage of drawing lines is limited! Possible only drawing a single lines. For all questions and comments please contact the developers of Ncurses.
+WARNING!!! When you build Midnight Commander with the ncurses screen library usage of drawing lines is limited! Possible only drawing a single lines. For all questions and comments please contact the developers of ncurses.
 
 Descriptions of parameters [Lines]:
 
@@ -1991,6 +1976,9 @@ These variables may be set in your ~/.config/mc/ini file:
 only_leading_plus_minus
         Allow special treatment for '+', '-', '*' in the command line (select, unselect, reverse selection) only if the command line is empty. You don't need to quote those characters in the middle of the command line. On the other hand, you cannot use them to change selection when the command line is not empty.
 
+alternate_plus_minus
+        If true, use '+', '-', '\' and '*' keys normally. For select/unselect, use 'Alt-+', 'Alt--' and 'Alt-*'.
+
 show_output_starts_shell
         This variable only works if you are not using the subshell support. When you use the C-o keystroke to go back to the user screen, if this one is set, you will get a fresh shell. Otherwise, pressing any key will bring you back to Midnight Commander.
 
@@ -2008,7 +1996,7 @@ These variables may be set in your ~/.config/mc/ini file:
         The end key has a similar behavior: Go down to the middle line, if over it; else go to the bottom line unless you already are at the bottom line, in such case it will move the selection to the last file name in the panel.
 
 use_file_to_guess_type
-        If this variable is on (the default) it will spawn the file command to match the file types listed on the mc.ext fileEdit Extension File.
+        If this variable is on (the default) it will spawn the file command to match the file types listed on the mc.ext.ini fileEdit Extension File.
 
 xtree_mode
         If this variable is on (default is off) when you browse the file system on a Tree panel, it will automatically reload the other panel with the contents of the selected directory.
@@ -2080,7 +2068,7 @@ Also now you can use extended learn keys. For example:
     ctrl-alt-right=\e[[1;6C
     ctrl-alt-left=\e[[1;6D
 
-This means that ctrl+alt+left sends a \e[[1;6D escape sequence and therefore Midnight Commander interprets "\e[[1;6D" as Ctrl-Alt-Left.
+This means that ctrl+alt+left sends a \e[[1;6D escape sequence and therefore Midnight Commander interprets "\e[[1;6D" as C-Alt-Left.
 
 The complete key symbol represents the escape sequences used to invoke the completion process, this is invoked with Alt-tab, but you can define other keys to do the same work (on those keyboard with tons of nice and unused keys everywhere).
 
@@ -2093,17 +2081,18 @@ Full paths below may vary between installations. They are also affected by the 
 
         The help file for the program.
 
-/usr/local/addons/hm-tools/share/mc/mc.ext
+/usr/local/addons/hm-tools/share/mc/mc.ext.ini
 
         The default system-wide extensions file.
 
-~/.config/mc/mc.ext
+~/.config/mc/mc.ext.ini
 
         User's own extension, view configuration and edit configuration file. They override the contents of the system wide files if present.
 
+/usr/local/addons/hm-tools/etc/mc/mc.ini
 /usr/local/addons/hm-tools/share/mc/mc.ini
 
-        The default system-wide setup for Midnight Commander, used only if the user doesn't have his own ~/.config/mc/ini file.
+        System-wide setup files for Midnight Commander, used only if the user doesn't have his own ~/.config/mc/ini file. If /usr/local/addons/hm-tools/etc/mc/mc.ini exists, /usr/local/addons/hm-tools/share/mc/mc.ini isn't used.
 
 /usr/local/addons/hm-tools/share/mc/mc.lib
 
@@ -2142,7 +2131,7 @@ SEE ALSO
 ed(1), gpm(1), terminfo(1), view(1), sh(1), bash(1), tcsh(1), zsh(1).
 
 Midnight Commander's page on the World Wide Web:
-	http://www.midnight-commander.org/
+	https://www.midnight-commander.org/
 [AUTHORS]
 AUTHORS
 
@@ -2151,7 +2140,7 @@ BUGS
 
 See the file TODO in the distribution for information on what remains to be done.
 
-If you want to report a problem with the program, please create bugreport at http://www.midnight-commander.org/.
+If you want to report a problem with the program, please create bugreport at https://www.midnight-commander.org/.
 
 Provide a detailed description of the bug, the version of the program you are running (mc -V displays this information), the operating system you are running the program on. If the program crashes, we would appreciate a stack trace.
 
