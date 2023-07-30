@@ -18,7 +18,9 @@ cd hm-tools
 In der Datei "generate_img.sh" folgenden Bereich editieren:
 
 ### Hier können einzelne Programme !!! abgewählt !!! werden ###
-# Bitte beachten, es gibt einen arm und eine x86 Bereich!
+# Bitte beachten, es gibt einen arm, ein aarch64 und eine x86 Bereich!
+# Raspi3 und Raspi4 sind z.B. aarch64!
+# Das Tinkerboard ist arm!
 # z.B. "cp -a arm/mc tmp/arm/"
 # wird "# cp -a arm/mc tmp/arm/"
 

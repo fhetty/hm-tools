@@ -15,7 +15,7 @@ cp -a profile.d tmp/
 cp -a licenses tmp/
 
 ### Hier können einzelne Programme !!! abgewählt !!! werden ###
-# Bitte beachten, es gibt einen arm und eine x86 Bereich!
+# Bitte beachten, es gibt einen arm, aarch64 und eine x86 Bereich!
 # z.B. "cp -a arm/mc tmp/arm/"
 # wird "# cp -a arm/mc tmp/arm/"
 
@@ -44,6 +44,32 @@ cp -a arm/oathtool tmp/arm/
 
 # copy iostat
 cp -a arm/iostat tmp/arm/
+
+# *** arm based binarys (aarch64) *** 
+mkdir tmp/aarch64
+# copy mc
+cp -a aarch64/mc tmp/aarch64/
+
+# copy nano
+cp -a aarch64/nano tmp/aarch64/
+
+# copy htop
+cp -a aarch64/htop tmp/aarch64/
+
+# copy bash
+cp -a aarch64/bash tmp/aarch64/
+
+# copy imagemagick
+cp -a aarch64/imagemagick tmp/aarch64/
+
+# copy sshpass
+cp -a aarch64/sshpass tmp/aarch64/
+
+# copy oathtool
+cp -a aarch64/oathtool tmp/aarch64/
+
+# copy iostat
+cp -a aarch64/iostat tmp/aarch64/
 
 # *** x86 based binarys (i686) ***
 mkdir tmp/x86

@@ -56,6 +56,8 @@ if [ "$1" == "HM-RASPBERRYMATIC" ]; then
   if [[ "${ARCH}" == "i686" ]] ||
      [[ "${ARCH}" == "x86_64" ]]; then
     FILE_DIR=x86
+  elif [[ "${ARCH}" == "aarch64" ]]; then
+    FILE_DIR=aarch64
   else
     FILE_DIR=arm
   fi
