@@ -673,6 +673,9 @@
         <message name="KernelWidthMustBeAnOddNumber">
           la largeur du grain doit être un nombre impair
         </message>
+        <message name="LabelExpected">
+          label expected
+        </message>
         <message name="MapImageRequired">
           image map requise
         </message>
@@ -737,9 +740,6 @@
         <message name="ReferenceIsNotMyType">
           référence de type erroné
         </message>
-        <message name="SetReadOnlyProperty">
-          tenter d'établir propriété en lecture seule
-        </message>
         <message name="SteganoImageRequired">
           image stégano requise
         </message>
@@ -769,6 +769,9 @@
         </message>
         <message name="UnbalancedParenthesis">
           parenthèse non fermée
+        </message>
+        <message name="UndefinedVariable">
+          undefined variable
         </message>
         <message name="UnrecognizedAttribute">
           attribut non reconnu
@@ -986,6 +989,9 @@
         </message>
         <message name="NoSuchElement">
           élément absent de la liste
+        </message>
+        <message name="SetReadOnlyProperty">
+          tenter d'établir propriété en lecture seule
         </message>
         <message name="UnknownImageProperty">
           image propriété non reconnus
@@ -1315,6 +1321,11 @@
         Moyenner la séquence d'images
       </message>
     </Average>
+    <Blur>
+      <message name="Image">
+        Blur de l'image
+      </message>
+    </Blur>
     <Chop>
       <message name="Image">
         Cisailler l'image

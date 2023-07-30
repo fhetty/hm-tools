@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -41,7 +41,7 @@ static inline MagickBooleanType QuantumTick(const MagickOffsetType offset,
     return(MagickTrue);
   if (offset == (MagickOffsetType) (span-1))
     return(MagickTrue);
-  if ((offset % (span/100)) == 0)
+  if ((offset % (MagickOffsetType) (span/100)) == 0)
     return(MagickTrue);
   return(MagickFalse);
 }

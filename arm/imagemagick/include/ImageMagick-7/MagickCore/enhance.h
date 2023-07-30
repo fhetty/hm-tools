@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
 
   You may not use this file except in compliance with the License.  You may
@@ -47,7 +47,8 @@ extern MagickExport MagickBooleanType
   NegateImage(Image *,const MagickBooleanType,ExceptionInfo *),
   NormalizeImage(Image *,ExceptionInfo *),
   SigmoidalContrastImage(Image *,const MagickBooleanType,const double,
-    const double,ExceptionInfo *);
+    const double,ExceptionInfo *),
+  WhiteBalanceImage(Image *,ExceptionInfo *);
 
 extern MagickExport Image
   *EnhanceImage(const Image *,ExceptionInfo *);

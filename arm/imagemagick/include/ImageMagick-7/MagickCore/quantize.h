@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -53,9 +53,11 @@ typedef struct _QuantizeInfo
     signature;
 } QuantizeInfo;
 
+
 extern MagickExport MagickBooleanType
   CompressImageColormap(Image *,ExceptionInfo *),
   GetImageQuantizeError(Image *,ExceptionInfo *),
+  KmeansImage(Image *,const size_t,const size_t,const double,ExceptionInfo *),
   PosterizeImage(Image *,const size_t,const DitherMethod,ExceptionInfo *),
   QuantizeImage(const QuantizeInfo *,Image *,ExceptionInfo *),
   QuantizeImages(const QuantizeInfo *,Image *,ExceptionInfo *),

@@ -1,5 +1,5 @@
 /*
-  Copyright 1999-2019 ImageMagick Studio LLC, a non-profit organization
+  Copyright @ 1999 ImageMagick Studio LLC, a non-profit organization
   dedicated to making software imaging solutions freely available.
   
   You may not use this file except in compliance with the License.  You may
@@ -33,11 +33,12 @@ extern MagickExport int
     const char *,const char *,const char *,const char,char *,int *,char *);
 
 extern MagickExport MagickBooleanType
-  GlobExpression(const char *,const char *,const MagickBooleanType)
-    magick_attribute((__pure__));
+  GlobExpression(const char *magick_restrict,const char *magick_restrict,
+    const MagickBooleanType) magick_attribute((__pure__));
 
 extern MagickExport size_t
-  GetNextToken(const char *,const char **,const size_t,char *);
+  GetNextToken(const char *magick_restrict,const char **magick_restrict,
+    const size_t,char *magick_restrict) magick_hot_spot;
 
 extern MagickExport TokenInfo
   *AcquireTokenInfo(void),

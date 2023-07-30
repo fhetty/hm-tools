@@ -1,7 +1,9 @@
 // This may look like C code, but it is really -*- C++ -*-
 //
 // Copyright Bob Friesenhahn, 1999, 2000, 2001, 2002, 2003
-// Copyright Dirk Lemstra 2013-2017
+//
+// Copyright @ 2013 ImageMagick Studio LLC, a non-profit organization
+// dedicated to making software imaging solutions freely available.
 //
 // Definition of Image, the representation of a single image in Magick++
 //
@@ -222,7 +224,7 @@ namespace Magick
 
     // Exif profile (BLOB)
     void exifProfile(const Blob &exifProfile_);
-    Blob exifProfile(void) const; 
+    Blob exifProfile(void) const;
 
     // Image file name
     void fileName(const std::string &fileName_);
@@ -376,7 +378,7 @@ namespace Magick
 
     // Dither method
     void quantizeDitherMethod(const DitherMethod ditherMethod_);
-    DitherMethod quantizeDitherMethod(void) const; 
+    DitherMethod quantizeDitherMethod(void) const;
 
     // Quantization tree-depth
     void quantizeTreeDepth(const size_t treeDepth_);
@@ -397,11 +399,15 @@ namespace Magick
     // The number of pixel rows in the image
     size_t rows(void) const;
 
+    // Image sampling factor
+    void samplingFactor(const std::string &samplingFactor_);
+    std::string samplingFactor(void) const;
+
     // Image scene number
     void scene(const size_t scene_);
     size_t scene(void) const;
 
-    // Width and height of a raw image 
+    // Width and height of a raw image
     void size(const Geometry &geometry_);
     Geometry size(void) const;
 
@@ -512,9 +518,11 @@ namespace Magick
 
     // Image representation type (also see type operation)
     //   Available types:
-    //    Bilevel        Grayscale       GrayscaleMatte
-    //    Palette        PaletteMatte    TrueColor
-    //    TrueColorMatte ColorSeparation ColorSeparationMatte
+    //    Bilevel         PaletteBilevelAlpha
+    //    Grayscale       GrayscaleAlpha
+    //    Palette         PaletteAlpha
+    //    TrueColor       TrueColorAlpha
+    //    ColorSeparation ColorSeparationAlpha
     void type(const ImageType type_);
     ImageType type(void) const;
 
@@ -550,7 +558,7 @@ namespace Magick
     void adaptiveResize(const Geometry &geometry_);
 
     // Adaptively sharpens the image by sharpening more intensely near image
-    // edges and less intensely far from edges. We sharpen the image with a 
+    // edges and less intensely far from edges. We sharpen the image with a
     // Gaussian operator of the given radius and standard deviation (sigma).
     // For reasonable results, radius should be larger than sigma.
     void adaptiveSharpen(const double radius_=0.0,const double sigma_=1.0);
@@ -702,15 +710,15 @@ namespace Magick
     // Chromaticity blue primary point.
     void chromaBluePrimary(const double x_,const double y_,const double z_);
     void chromaBluePrimary(double *x_,double *y_,double *z_) const;
-    
+
     // Chromaticity green primary point.
     void chromaGreenPrimary(const double x_,const double y_,const double z_);
     void chromaGreenPrimary(double *x_,double *y_,double *z_) const;
-    
+
     // Chromaticity red primary point.
     void chromaRedPrimary(const double x_,const double y_,const double z_);
     void chromaRedPrimary(double *x_,double *y_,double *z_) const;
-    
+
     // Chromaticity white point.
     void chromaWhitePoint(const double x_,const double y_,const double z_);
     void chromaWhitePoint(double *x_,double *y_,double *z_) const;
@@ -977,14 +985,16 @@ namespace Magick
       const double sigma_);
 
     // Transfers read-only pixels from the image to the pixel cache as
-    // defined by the specified region
+    // defined by the specified region.
     const Quantum *getConstPixels(const ::ssize_t x_, const ::ssize_t y_,
       const size_t columns_,const size_t rows_) const;
 
-    // Obtain immutable image pixel metacontent (valid for PseudoClass images)
+    // Obtain immutable image pixel metacontent. The selected region is defined
+    // by the prior getPixels(), getConstPixels(), or setPixels() call.
     const void *getConstMetacontent(void) const;
 
-    // Obtain mutable image pixel metacontent (valid for PseudoClass images)
+    // Obtain mutable image pixel metacontent. The selected region is defined
+    // by a prior getPixels(), getConstPixels(), or setPixels() call.
     void *getMetacontent(void);
 
     // Transfers pixels from the image to the pixel cache as defined
@@ -1193,7 +1203,7 @@ namespace Magick
     // 3-D raised or lowered effect)
     void raise(const Geometry &geometry_=raiseGeometryDefault,
       const bool raisedFlag_=false);
-    
+
     // Random threshold image.
     //
     // Changes the value of individual pixels based on the intensity
@@ -1231,7 +1241,7 @@ namespace Magick
     // image.read( 640, 480, "RGB", 0, pixels );
     void read(const size_t width_,const size_t height_,const std::string &map_,
       const StorageType type_,const void *pixels_);
-    
+
     // Read single image frame into current object
     void read(const std::string &imageSpec_);
 
@@ -1296,7 +1306,7 @@ namespace Magick
     Image separate(const ChannelType channel_) const;
 
     // Applies a special effect to the image, similar to the effect achieved in
-    // a photo darkroom by sepia toning.  Threshold ranges from 0 to 
+    // a photo darkroom by sepia toning.  Threshold ranges from 0 to
     // QuantumRange and is a measure of the extent of the sepia toning.
     // A threshold of 80% is a good starting point for a reasonable tone.
     void sepiaTone(const double threshold_);

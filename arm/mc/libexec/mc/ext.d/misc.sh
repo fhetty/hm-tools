@@ -13,10 +13,14 @@ do_view_action() {
 
     case "${filetype}" in
     iso9660)
-         isoinfo -d -i "${MC_EXT_FILENAME}" && isoinfo -l -R -J -i "${MC_EXT_FILENAME}"
+         if which isoinfo > /dev/null 2>&1; then
+             isoinfo -d -i "${MC_EXT_FILENAME}" && isoinfo -l -R -J -i "${MC_EXT_FILENAME}"
+         else
+             7za l "${MC_EXT_FILENAME}"
+         fi
         ;;
     cat)
-        /bin/cat "${MC_EXT_FILENAME}" 2>/dev/null
+        cat "${MC_EXT_FILENAME}" 2>/dev/null
         ;;
     ar)
         file "${MC_EXT_FILENAME}" && nm -C "${MC_EXT_FILENAME}"
@@ -35,7 +39,7 @@ do_view_action() {
         dbview -b "${MC_EXT_FILENAME}"
         ;;
     sqlite)
-        sqlite3 "${MC_EXT_FILENAME}" .dump
+        sqlite3 "file:${MC_EXT_FILENAME}?immutable=1" .dump
         ;;
     mo)
         msgunfmt "${MC_EXT_FILENAME}" || \
@@ -48,7 +52,8 @@ do_view_action() {
         ctorrent -x "${MC_EXT_FILENAME}" 2>/dev/null
         ;;
     javaclass)
-        jad -p "${MC_EXT_FILENAME}" 2>/dev/null
+        jad -p "${MC_EXT_FILENAME}" 2>/dev/null || \
+            (file -b "${MC_EXT_FILENAME}"; javap -private "${MC_EXT_FILENAME}" 2>/dev/null)
         ;;
     *)
         ;;
@@ -66,7 +71,7 @@ do_open_action() {
         sqlite3 "${MC_EXT_FILENAME}"
         ;;
     glade)
-        if glade-3 --version >/dev/null 2>&1; then
+        if which glade-3 >/dev/null 2>&1; then
             (glade-3 "${MC_EXT_FILENAME}" >/dev/null 2>&1 &)
         else
             (glade-2 "${MC_EXT_FILENAME}" >/dev/null 2>&1 &)

@@ -10,7 +10,7 @@ less=+%lineno %filename
 mcedit=%filename:%lineno
 
 [Special dirs]
-list=/afs;/coda;/:;/...;/net;/#smb
+list=/afs;/coda;/:;/...;/net
 
 [terminal:console]
 insert=\\e[2~
@@ -42,33 +42,7 @@ kpslash=\\eOQ
 kpnumlock=\\eOP
 
 [terminal:linux]
-insert=\\e[2~
-f11=\\e[23~
-f12=\\e[24~
-f13=\\e[25~
-f14=\\e[26~
-f15=\\e[28~
-f16=\\e[29~
-f17=\\e[31~
-f18=\\e[32~
-f19=\\e[33~
-f20=\\e[34~
-kpleft=\\eOt
-kpright=\\eOv
-kpup=\\eOx
-kpdown=\\eOr
-kphome=\\eOw
-kpend=\\eOq
-kpnpage=\\eOs
-kpppage=\\eOy
-kpplus=\\eOl
-kpminus=\\eOS
-kpasterisk=\\eOR
-kpinsert=\\eOp
-kpdelete=\\eOn
-kpenter=\\eOM
-kpslash=\\eOQ
-kpnumlock=\\eOP
+copy=console
 
 [terminal:xterm]
 insert=\\e[2~
@@ -110,11 +84,8 @@ right=\\eOC
 left=\\e[D
 left=\\eOD
 
-# arrows with modifiers
-alt-shift-right=\\e[1\;4C
-alt-shift-left=\\e[1\;4D
-alt-shift-up=\\e[1\;4A
-alt-shift-down=\\e[1\;4B
+[terminal:alacritty]
+copy=xterm
 
 [terminal:gnome]
 copy=xterm
@@ -135,6 +106,12 @@ copy=xterm
 copy=xterm
 
 [terminal:screen-256color]
+copy=xterm
+
+[terminal:tmux]
+copy=xterm
+
+[terminal:tmux-256color]
 copy=xterm
 
 [terminal:ibmpc3]
@@ -165,3 +142,22 @@ f17=\\e[e
 f18=\\e[f
 f19=\\e[g
 f20=\\e[h
+
+[terminal:st]
+shift-right=\\e[1\;2C
+shift-left=\\e[1\;2D
+shift-up=\\e[1\;2A
+shift-down=\\e[1\;2B
+alt-shift-right=\\e[1\;4C
+alt-shift-left=\\e[1\;4D
+alt-shift-up=\\e[1\;4A
+alt-shift-down=\\e[1\;4B
+
+[terminal:st-256color]
+copy=st
+
+[terminal:st-git-256color]
+copy=st
+
+[terminal:xterm-kitty]
+copy=xterm
